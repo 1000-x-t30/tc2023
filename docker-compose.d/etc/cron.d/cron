@@ -1,0 +1,6 @@
+#* * * * * root /var/www/html/cron/example.sh
+#* * * * * root /var/www/html/cron/audit.sh
+
+# -----------------
+# 最終行は改行が必要
+# -----------------

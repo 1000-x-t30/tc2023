@@ -1,0 +1,264 @@
+@extends("/_layouts/member.html")
+
+@section("page-title")
+@include("/include/global/page-title.html", {"title": "サインイン", "add_class":"acms-text-center"})
+@endsection
+
+@section("main")
+<!-- BEGIN_MODULE Member_Signin -->
+<div class="acms-container">
+  <form
+    action=""
+    method="post"
+    class="acms-form"
+    enctype="multipart/form-data"
+  >
+    <!-- BEGIN signin -->
+    <div class="acms-entry entry-style entry-style-top">
+      <div class="acms-grid entry-style-grid">
+        <div class="js-unit_group-align acms-entry-unit-full ug-text-center">
+          <div class="entry-text-unit is-p">
+            <p>
+              ログインすると会員限定の情報を閲覧できるようになります。<br />
+              <strong>初めての方は<a href="%{BLOG_URL}%{SIGNUP_SEGMENT}/">新規会員登録</a>へ。</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="separate">
+      <section class="separate-item">
+        <h2 class="heading-md heading-margin-top-none acms-text-center">
+          メールアドレスでサインイン
+        </h2>
+
+        <div class="validator-result-{mail:validator#restriction} acms-alert acms-alert-danger">
+          お使いの端末（ブラウザ）からはログインが禁止されています。<br />管理者にお問い合わせ下さい。
+        </div>
+        <div class="validator-result-{pass:validator#auth} acms-alert acms-alert-danger">
+          ユーザーIDまたはパスワードが違います
+        </div>
+        <div class="validator-result-{mail:validator#notFound} acms-alert acms-alert-danger">
+          ユーザーが存在しません
+        </div>
+        <div class="validator-result-{mail:validator#send} acms-alert acms-alert-danger">
+          認証メールの送信に失敗しました
+        </div>
+        <div class="validator-result-{mail:validator#lock} acms-alert acms-alert-danger">
+          <!--$1-->{trialNumber}<!--/$1-->回ログインに失敗したため、アカウントがロックされました。
+          <!--$1-->{lockTime}<!--/$1-->分後にもう一度試してください。
+        </div>
+        <div class="validator-result-{mailAuthSignin:validator#enable} acms-alert acms-alert-danger">
+          メール認証によるサインイン機能は無効です
+        </div>
+        <div class="validator-result-{passwordSignin:validator#enable} acms-alert acms-alert-danger">
+          パスワードによるサインイン機能は無効です
+        </div>
+
+        <!-- BEGIN badRequest -->
+        <div class="acms-alert acms-alert-danger">
+          不正なアクセスです。
+        </div>
+        <!-- END badRequest -->
+
+        <!-- BEGIN expired -->
+        <div class="acms-alert acms-alert-danger">
+          有効期限切れのURLです。再度お試しください。
+        </div>
+        <!-- END expired -->
+
+        @include("/_member/parts/error.html")
+
+        <ul class="form-group-list">
+          <li class="form-group">
+            <div class="form-label">
+              <label class="acms-form-block acms-clear" for="input-text-mail"
+                >メールアドレス</label
+              >
+            </div>
+            <div class="form-control">
+              <input
+                type="text"
+                name="mail"
+                value="{mail}"
+                class="acms-form-large acms-form-block acms-form-width-full js-ready-focus"
+                id="input-text-mail"
+                placeholder=""
+                autocomplete="username"
+                data-validator="mail"
+              />
+              <input type="hidden" name="login[]" value="mail" />
+            </div>
+          </li>
+          <!-- BEGIN_IF [{email_auth_signin}/neq/on] -->
+          <li class="form-group">
+            <div class="form-label">
+              <label class="acms-form-block acms-clear" for="input-password"
+                >パスワード</label
+              >
+              <button
+                type="button"
+                id="js-toggle-password"
+                class="form-toggle-password"
+                data-target="#input-password"
+                aria-label="パスワードをテキストで表示します。周りに人がいないことを確認して表示してください。"
+              >
+                パスワードを表示
+              </button>
+            </div>
+            <div class="form-control">
+              <input
+                type="password"
+                name="pass"
+                value="{pass}"
+                id="input-password"
+                class="acms-form-large acms-form-block acms-form-width-full"
+                autocomplete="current-password"
+              />
+              <input type="hidden" name="login[]" value="pass" />
+              <input type="hidden" name="redirect" value="%{redirect}" />
+              <input type="hidden" name="login[]" value="redirect" />
+            </div>
+          </li>
+          <!-- END_IF -->
+        </ul>
+        <!-- BEGIN_IF [{email_auth_signin}/neq/on] -->
+        <p class="acms-text-center">
+          <a
+            href="%{BLOG_URL}%{RESET_PASSWORD_SEGMENT}/"
+            class="text-link is-color-text is-bold"
+            >パスワードをお忘れの方はこちらから</a
+          >
+        </p>
+
+        <div class="form-button-group">
+          <button
+            type="submit"
+            name="ACMS_POST_Member_Signin"
+            class="button is-lg is-width-lg form-button"
+          >
+            サインイン
+          </button>
+        </div>
+        <!-- END_IF -->
+
+        <!-- BEGIN_IF [{email_auth_signin}/eq/on] -->
+        <p class="form-button-group">
+          <button
+            type="submit"
+            name="ACMS_POST_Member_SigninWithEmail"
+            class="button is-lg is-width-lg form-button"
+          >
+            確認メールを送信
+          </button>
+        </p>
+        <!-- END_IF -->
+      </section>
+      @include("/_member/parts/signin/sns.html")
+    </div>
+    <!-- END signin -->
+
+    <!-- BEGIN verifyCode -->
+    <div>
+      <!-- BEGIN successSent -->
+      <p class="form-message">本人確認のため、確認メールをお送りしました。<br>メールに記載されている確認リンクをクリックするか、下記に確認コードを入力してください。</p>
+      <!-- END successSent -->
+
+      <div class="form-group-list is-narrow">
+        <div class="form-group">
+          <div class="validator-result-{mail:validator#lock} acms-alert acms-alert-danger">
+            {trialNumber}回ログインに失敗したため、アカウントがロックされました。
+            {lockTime}分後にもう一度試してください。
+          </div>
+          <div class="validator-result-{code:validator#auth} acms-alert acms-alert-danger">
+            確認コードが違います
+          </div>
+          <div class="validator-result-{code:validator#request} acms-alert acms-alert-danger">
+            不正なアクセスです
+          </div>
+          <div class="validator-result-{code:validator#expired} acms-alert acms-alert-danger">
+            確認コードの有効期限が切れています
+          </div>
+        </div>
+      </div>
+
+      <ul class="form-group-list is-narrow">
+        <li class="form-group">
+          <div class="form-label">
+            <label for="input-text-code" class="acms-form-block acms-clear">確認コード</label>
+          </div>
+          <input
+            type="text"
+            name="code"
+            value="{code}"
+            id="input-text-code"
+            class="acms-form-large acms-form-block acms-form-width-full"
+            placeholder=""
+            data-validator="code"
+          >
+          <input type="hidden" name="login[]" value="code" />
+          <input type="hidden" name="takeover" value="{signin:takeover}" />
+        </li>
+      </ul>
+      <div class="form-button-group">
+        <button
+          type="submit"
+          name="ACMS_POST_Member_SigninWithVerifyCode"
+          class="button is-lg is-width-lg form-button"
+        >
+          サインイン
+        </button>
+      </div>
+      <div class="form-button-group">
+        <a href="%{BLOG_URL}%{SIGNIN_SEGMENT}/" class="button is-bordered is-lg is-width-lg form-button">サインイン画面に戻る</a>
+      </div>
+    </div>
+    <!-- END verifyCode -->
+
+    <!-- BEGIN tfa -->
+    <div>
+      <p class="form-message">認証用アプリに表示されている、認証コードを入力してください。</p>
+
+      <ul class="form-group-list is-narrow">
+        <li class="form-group">
+          <div class="form-label">
+            <label for="input-text-code" class="acms-form-block acms-clear">確認コード</label>
+          </div>
+          <input
+            type="text"
+            name="code"
+            value="{code}"
+            id="input-text-code"
+            class="acms-form-large acms-form-block acms-form-width-full"
+            data-validator="code"
+            placeholder=""
+          />
+          <input type="hidden" name="login[]" value="code" />
+          <input type="hidden" name="takeover" value="{signin:takeover}" />
+
+          <div role="alert" class="validator-result-{code:validator#auth} form-error-text">
+            <i class="acms-icon acms-icon-news"></i>
+            <span>２段階認証コードが違います</span>
+          </div>
+        </li>
+      </ul>
+      <p class="acms-text-center">
+        <a
+          href="%{BLOG_URL}%{TFA_RECOVERY_SEGMENT}/"
+          class="text-link is-color-text is-bold"
+          >リカバリーコードを使って、２段階認証を無効にする</a
+        >
+      </p>
+      <div class="form-button-group">
+        <button type="submit" name="ACMS_POST_Member_Tfa_Auth" class="button is-lg is-width-lg form-button">サインイン</button>
+      </div>
+      <div class="form-button-group">
+        <a href="%{BLOG_URL}%{SIGNIN_SEGMENT}/" class="button is-bordered is-lg is-width-lg form-button">サインイン画面に戻る</a>
+      </div>
+    </div>
+    <!-- END tfa -->
+  </form>
+</div>
+<!-- END_MODULE Member_Signin -->
+@endsection

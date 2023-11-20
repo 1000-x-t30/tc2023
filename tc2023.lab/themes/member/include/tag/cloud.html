@@ -1,0 +1,12 @@
+<!-- BEGIN_MODULE Tag_Cloud id="{{module_id}}" -->
+<div class="tag-box">
+  <ul class="tag-list">
+    @include("/admin/module/setting.html")
+    <!-- BEGIN tag:loop -->
+    <li class="tag-item">
+      <a href="{url}" class="tag-link">#{name}</a>
+    </li>
+    <!-- END tag:loop -->
+  </ul>
+</div>
+<!-- END_MODULE Tag_Cloud -->

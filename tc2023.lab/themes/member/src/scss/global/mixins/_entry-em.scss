@@ -1,0 +1,9 @@
+@use "../variables" as var;
+
+// 強調
+@mixin entry-em($color) {
+  padding: 0 0 5px;
+  color: $color;
+  font-weight: bold;
+  font-style: normal;
+}

@@ -1,0 +1,26 @@
+<!-- BEGIN_MODULE Blog_Field -->{script_head}[raw]<!-- END_MODULE Blog_Field -->
+<script src="%{JS_LIB_JQUERY_DIR}jquery-%{JS_LIB_JQUERY_DIR_VERSION}.min.js" charset="UTF-8"></script>
+<!-- BEGIN_MODULE Js -->
+<script src="/acms.js{arguments}" charset="UTF-8" id="acms-js"></script>
+<!-- END_MODULE Js -->
+
+<script src="
+https://cdn.jsdelivr.net/npm/scroll-behavior-polyfill@2.0.13/dist/index.min.js
+"></script>
+<script src="/js/index.js" defer></script>
+
+<!-- BEGIN_MODULE Touch_SessionWithContribution -->
+<script src="/include/edit/custom.js"></script>
+<!-- END_MODULE Touch_SessionWithContribution -->
+
+<script>
+  ACMS.Ready(() => {
+    ACMS.Config.postIncludeMethod = 'replace';
+    ACMS.Config.postIncludeEffect = '';
+    ACMS.Config.postIncludeEffectSpeed = 'fast';
+  });
+</script>
+
+<!-- BEGIN_IF [<!--BEGIN_MODULE Touch_SessionWithContribution -->1<!-- END_MODULE Touch_SessionWithContribution -->/em/] -->
+<!-- BEGIN_MODULE Blog_Field ctx="bid/1" -->{google_analytics}[raw]<!-- END_MODULE Blog_Field -->
+<!-- END_IF -->

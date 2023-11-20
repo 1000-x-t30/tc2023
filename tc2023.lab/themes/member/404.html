@@ -1,0 +1,28 @@
+@extends("/_layouts/base.html")
+
+@section("main")
+<div class="acms-container">
+
+  <div class="not-found-content">
+    <h1 class="not-found-title">404</h1>
+    <p class="not-found-paragraph">
+      <span class="text-word-break">申し訳ございませんが、</span><span class="text-word-break">お探しのページは</span><span class="text-word-break">存在していないようです。</span>
+    </p>
+    <p><a href="%{BASE_URL}" class="button is-xl">トップページに戻る</a></p>
+  </div>
+
+  <section class="search">
+    <div>
+      <h2 class="heading-sm"><label for="searchForm">キーワードから検索する</label></h2>
+    </div>
+    @include("/include/parts/form-search.html")
+  </section>
+
+  <section>
+    <h2 class="heading-sm">話題のタグ</h2>
+    @include("/include/tag/cloud.html", {
+      "module_id": "tag_cloud"
+    })
+  </section>
+</div>
+@endsection

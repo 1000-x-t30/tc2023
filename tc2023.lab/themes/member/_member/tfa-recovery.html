@@ -1,0 +1,128 @@
+@extends("/_layouts/member.html")
+
+@section("page-title")
+<!-- ページタイトル -->
+@include("/include/global/page-title.html", {"title": "2段階認証のリカバリー", "add_class":"acms-text-center"})
+@endsection
+
+@section(main)
+<!-- BEGIN_MODULE Member_Tfa_Recovery -->
+<div class="container-md">
+  <section class="form-section">
+
+    <!-- BEGIN success -->
+    <p class="form-message">2段階認証を無効化しました。</p>
+    <!-- END success -->
+
+    <!-- BEGIN notSuccessful -->
+    <p class="form-message">リカバリーコードを使って、2段階認証を無効にします。</p>
+    <!-- END notSuccessful -->
+
+    <form action="" method="post" enctype="multipart/form-data" class="acms-form">
+
+      <div class="form-group-list is-narrow">
+        <div class="form-group">
+          <div class="acms-alert acms-alert-danger validator-result-{mail:validator#lock}">
+            {trialNumber}回ログインに失敗したため、アカウントがロックされました。
+            {lockTime}分後にもう一度試してください。
+          </div>
+
+          @include("/_member/parts/error.html")
+        </div>
+      </div>
+
+      <!-- BEGIN notSuccessful -->
+      <ul class="form-group-list is-narrow">
+        <li class="form-group">
+          <div class="form-label">
+            <label for="input-text-mail" class="acms-form-block acms-clear">メールアドレス</label>
+          </div>
+          <input
+            type="text"
+            name="mail"
+            value="{mail}"
+            id="input-text-mail"
+            class="acms-form-large acms-form-block acms-form-width-full"
+            placeholder=""
+            data-validator="mail"
+          >
+          <input type="hidden" name="login[]" value="mail">
+
+          <div role="alert" class="validator-result-{pass:validator#auth} form-error-text">
+            <i class="acms-icon acms-icon-news"></i>
+            <span>メールアドレスまたはパスワードが違います。</span>
+          </div>
+        </li>
+        <li class="form-group">
+          <div class="form-label">
+            <label class="acms-form-block acms-clear" for="input-password"
+              >パスワード</label
+            >
+            <button
+              type="button"
+              id="js-toggle-password"
+              class="form-toggle-password"
+              data-target="#input-password"
+              aria-label="パスワードをテキストで表示します。周りに人がいないことを確認して表示してください。"
+            >
+              パスワードを表示
+            </button>
+          </div>
+          <div class="form-control">
+            <input
+              type="password"
+              name="pass"
+              value="{pass}"
+              id="input-password"
+              class="acms-form-large acms-form-block acms-form-width-full"
+              autocomplete="off"
+            />
+            <input type="hidden" name="login[]" value="pass" />
+
+            <div role="alert" class="validator-result-{pass:validator#auth} form-error-text">
+            <i class="acms-icon acms-icon-news"></i>
+            <span>メールアドレスまたはパスワードが違います。</span>
+          </div>
+          </div>
+        </li>
+        <li class="form-group">
+          <div class="form-label">
+            <label for="input-text-recovery" class="acms-form-block acms-clear">リカバリーコード</label>
+          </div>
+          <input
+            type="text"
+            name="recovery"
+            value="{recovery}"
+            id="input-text-recovery"
+            class="acms-form-large acms-form-block acms-form-width-full"
+            placeholder=""
+            data-validator="mail"
+          >
+          <input type="hidden" name="login[]" value="recovery">
+
+          <div role="alert" class="validator-result-{recovery:validator#auth} form-error-text">
+            <i class="acms-icon acms-icon-news"></i>
+            <span>リカバリーコードが正しくありません</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="form-button-group">
+        <button
+          type="submit"
+          name="ACMS_POST_Member_Tfa_Recovery"
+          class="button is-lg is-width-lg is-danger form-button"
+        >
+          ２段階認証を無効化
+        </button>
+      </div>
+      <!-- END notSuccessful -->
+    </form>
+
+    <div class="form-button-group">
+      <a href="%{BLOG_URL}%{SIGNIN_SEGMENT}/" class="button is-bordered is-lg is-width-lg form-button">サインインページに移動</a>
+    </div>
+  </section>
+</div>
+<!-- END_MODULE Member_Tfa_Recovery -->
+@endsection

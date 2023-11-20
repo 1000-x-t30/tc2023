@@ -1,0 +1,64 @@
+<!-- BEGIN_MODULE Category_EntrySummary id="{{module_id}}" -->
+<div>
+@include("/admin/module/setting.html")
+
+<!-- BEGIN categoryEntryList:loop --><!-- BEGIN categoryUl#front -->
+<!-- END categoryUl#front --><!-- BEGIN category:loop -->
+<section class="summary-section">
+  <header id="carousel-heading-{categoryCode}" class="summary-section-header">
+    <h3 class="heading-md">{categoryName}</h3>
+    <a href="{categoryUrl}" class="button is-sm is-bordered is-rounded">すべて見る</a>
+  </header>
+  <!-- BEGIN notFound --><p>ただいまページを準備しております。もうしばらくお待ちください。</p><!-- END notFound -->
+  <div id="carousel-{categoryCode}" class="js-carousel splide summary-section-carousel" aria-labelledby="carousel-heading-{categoryCode}">
+    <div class="splide__arrows">
+      <button class="splide__arrow splide__arrow--prev" aria-label="前へ">
+        <span class="arrow"></span>
+      </button>
+      <button class="splide__arrow splide__arrow--next" aria-label="次へ">
+        <span class="arrow"></span>
+      </button>
+    </div>
+    <div class="splide__track">
+      <ul class="card-list -carousel splide__list"><!-- BEGIN unit:loop -->
+      <!-- BEGIN entry:loop -->
+      <li class="acms-col-md-3 card-item splide__slide">
+        <div class="card">
+          <a href="{url}" class="card-link">
+            <div class="card-img-wrap"><!-- BEGIN image:veil -->
+              <img src="%{ROOT_DIR}{path}[resizeImg(455,256)]" alt="" width="455" height="256" class="acms-img-responsive card-img"><!-- END image:veil --><!-- BEGIN noimage --><img src="/images/noimage.png" alt="" class="acms-img-responsive card-img"><!-- END noimage -->
+            </div>
+            <time class="card-date" datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年{date#m}月{date#d}日( {date#week} )<!-- BEGIN new --><span class="badge is-inverse card-badge-news">NEW</span><!-- END new --></time>
+            <h2 class="card-title">{title}</h2>
+            <p class="card-text">{summary}[trim(60, '...')]</p>
+            <!-- BEGIN tag:veil -->
+            <div class="card-tag-wrap">
+              <ul class="tag-list is-sm" aria-label="関連タグ">
+                <!-- BEGIN tag:loop -->
+                <li class="tag-item">#{name}</li>
+                <!-- END tag:loop -->
+              </ul>
+            </div><!-- END tag:veil -->
+            <!-- BEGIN userField -->
+            <div class="card-footer">
+              <p class="card-author">
+                <!-- BEGIN fieldUserIcon:veil -->
+                <img src="%{ARCHIVES_DIR}{fieldUserIcon}[resizeImg(30,30)]" width="30" height="30" alt="" class="card-author-img">
+                <!-- END fieldUserIcon:veil -->
+                {fieldUserName}
+              </p>
+            </div>
+            <!-- END userField -->
+          </a>
+        </div>
+      </li><!-- END entry:loop -->
+      <!-- END unit:loop -->
+      </ul>
+    </div>
+  </div>
+</section><!-- END category:loop --><!-- BEGIN categoryLi#rear -->
+<!-- END categoryLi#rear --><!-- BEGIN categoryUl#rear -->
+<!-- END categoryUl#rear --><!-- END categoryEntryList:loop -->
+
+</div>
+<!-- END_MODULE Category_EntrySummary -->

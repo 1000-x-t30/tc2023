@@ -1,0 +1,49 @@
+<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
+<div class="visual-card-wrap">
+  <div id="js-top-carousel" class="splide" aria-label="ピックアップ記事">
+    <div class="splide__arrows">
+      <button class="splide__arrow splide__arrow--prev" aria-label="前へ">
+        <span class="arrow"></span>
+      </button>
+      <button class="splide__arrow splide__arrow--next" aria-label="次へ">
+        <span class="arrow"></span>
+      </button>
+    </div>
+
+    <div class="splide__track">
+      <div class="splide__list">
+        <!-- BEGIN unit:loop -->
+        <!-- BEGIN entry:loop -->
+        <div class="splide__slide">
+          <div class="visual-card">
+            <a href="{url}" class="visual-card-link<!-- BEGIN_IF [{path}/em] --> is-noimage<!-- END_IF -->">
+              <!-- BEGIN image:veil -->
+              <div class="visual-card-img-wrap">
+                <img src="%{ROOT_DIR}{path}[resizeImg('680','450')]" alt="" width="680" height="450" class="acms-img-responsive visual-card-img">
+              </div>
+              <!-- END image:veil -->
+              <div class="visual-card-body">
+                <div class="visual-card-info">
+                  <time class="visual-card-time" datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年{date#m}月{date#d}日( {date#week} )</time>
+                  <!-- BEGIN categoryField:veil --><!-- BEGIN categoryField --><p class="visual-card-category">{fieldCategoryName}</p><!-- END categoryField --><!-- END categoryField:veil -->
+                  <!-- BEGIN membersOnly -->
+                  <p class="visual-card-tag tag-limited">
+                    <span class="tag-limited-icon acms-icon acms-icon-config_access" aria-hidden="true"></span>
+                    <span class="tag-limited-text">会員限定</span>
+                  </p>
+                  <!-- END membersOnly -->
+                </div>
+                <h2 class="visual-card-title">{title}</h2>
+                <p class="visual-card-text">{summary}[trim(130, '...')]</p>
+                <p class="visual-card-read-more">続きを読む</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- END entry:loop -->
+        <!-- END unit:loop -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END_MODULE Entry_Summary-->

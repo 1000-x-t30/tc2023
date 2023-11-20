@@ -1,0 +1,101 @@
+
+<h3 class="heading-sm heading-line">お問い合わせ情報</h3>
+<ul class="form-group-list">
+<li class="form-group">
+  <div class="form-label">
+    <span class="label-required">必須</span><label for="description">お問い合わせ種別</label>
+  </div>
+  <div class="form-control">
+    <select id="description" class="form-select acms-form-width-full" name="description" data-validator="description">
+      <option value=""<!-- BEGIN_IF [{description}/em] --> selected="selected"<!-- END_IF -->>お問い合わせ種別を選択</option>
+      <option value="ご質問"{description:selected#ご質問}>ご質問</option>
+      <option value="ご要望"{description:selected#ご要望}>ご要望</option>
+      <option value="資料請求"{description:selected#資料請求}>資料請求</option>
+      <option value="その他"{description:selected#その他}>その他</option>
+    </select>
+    <input type="hidden" name="field[]" value="description">
+    <input type="hidden" name="description:v#required" id="description-v-required">
+
+    <div role="alert" aria-live="assertive">
+      <div data-validator-label="description-v-required" class="validator-result-{description:v#required}">
+        <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>お問い合わせ種別を選択してください。</p>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="form-group">
+  <div class="form-label">
+    <span class="label-required">必須</span><label for="inquiry">お問い合わせ内容</label>
+  </div>
+  <div class="form-control">
+    <textarea id="inquiry" name="inquiry" rows="5" class="acms-form-width-full" placeholder="お問い合わせ内容を入力してください。" data-validator="inquiry">{inquiry}</textarea>
+    <input type="hidden" name="field[]" value="inquiry">
+    <input type="hidden" name="inquiry:v#required" id="inquiry-v-required">
+    <input type="hidden" name="inquiry:c" value="KV">
+
+    <div role="alert" aria-live="assertive">
+      <div data-validator-label="inquiry-v-required" class="validator-result-{inquiry:v#required}">
+        <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>お問い合わせ内容を入力してください。</p>
+      </div>
+    </div>
+  </div>
+</li>
+</ul>
+
+
+<h3 class="heading-sm heading-line">お客様情報</h3>
+<ul class="form-group-list">
+<li class="form-group">
+  <div class="form-label"><span class="label-required">必須</span><label for="name">お名前</label></div>
+  <div class="form-control">
+    <input id="name" type="text" name="name" autocomplete="name" class="acms-form-width-full" value="{name}" placeholder="例）山田 太郎" data-validator="name">
+    <input type="hidden" name="field[]" value="name">
+    <input type="hidden" name="name:v#required" id="name-v-required">
+    <input type="hidden" name="name:c" value="KV">
+
+    <div role="alert" aria-live="assertive">
+      <div data-validator-label="name-v-required" class="validator-result-{name:v#required}">
+        <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>お名前を入力してください。</p>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="form-group">
+  <div class="form-label">
+    <span class="label-required">必須</span><label for="email">メールアドレス</label>
+  </div>
+  <div class="form-control">
+    <input id="email" type="email" name="email" autocomplete="email" value="{email}" class="acms-form-width-full" placeholder="例）info@example.com" data-validator="email">
+    <input type="hidden" name="field[]" value="email">
+    <input type="hidden" name="email:v#required" id="email-v-required">
+    <input type="hidden" name="email:v#email" id="email-v-email">
+    <input type="hidden" name="email:c" value="a">
+
+    <p class="form-helper-text">ご記入いただいたメールアドレスに返信します</p>
+
+    <div data-validator-label="email-v-required" class="validator-result-{email:v#required}">
+      <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>メールアドレスを入力してください。</p>
+    </div>
+    <div role="alert" aria-live="assertive">
+      <div data-validator-label="email-v-email" class="validator-result-{email:v#required}">
+        <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>正しいメールアドレスを入力してください。</p>
+      </div>
+    </div>
+  </div>
+</li>
+</ul>
+
+<fieldset class="form-group">
+  <legend class="form-label"><span class="label-required">必須</span>プライバシーポリシーへの同意</legend>
+  <label class="acms-form-checkbox form-checkbox-only" for="input-privacy-on" data-validator="privacy"><input type="checkbox" name="privacy[]" value="on" id="input-privacy-on" {privacy:checked#on}/><i class="acms-ico-checkbox"></i><span class="form-checkbox-only-label"><a href="%{BASE_URL}privacy.html" target="_blank">プライバシーポリシー</a>に同意する</span></label>
+  <input type="hidden" name="field[]" value="privacy"/>
+  <input type="hidden" name="privacy:v#required" id="privacy-v-required"/>
+
+  <p class="form-helper-text">※お客様の個人情報はお問い合わせへの対応のみに利用させていただきます。</p>
+
+  <div role="alert" aria-live="assertive">
+    <div data-validator-label="privacy-v-required" class="validator-result-{privacy:v#required}">
+      <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>プライバシーポリシーを確認し、同意いただけないとお問い合わせに応じることができません。</p>
+    </div>
+  </div>
+</fieldset>

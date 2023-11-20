@@ -1,0 +1,29 @@
+<h3 class="acms-admin-admin-title2">ページタイトル設定</h3>
+<table class="adminTable acms-admin-table-admin-edit">
+  <tr>
+    <th>文字揃え
+      <i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="チェックしない場合は左揃えになります"></i>
+    </th>
+    <td>
+      <div class="acms-admin-form-checkbox">
+        <input type="checkbox" name="title_align[]" value="center" {title_align:checked#center} id="input-checkbox-title_align-center" />
+        <label for="input-checkbox-title_align-center">
+          <i class="acms-admin-ico-checkbox"></i>中央寄せにする</label>
+      </div>
+      <input type="hidden" name="field[]" value="title_align" />
+    </td>
+  </tr>
+  <tr>
+    <th>表示テキスト
+      <i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="チェックしない場合は日本語と英語のタイトルが表示されます"></i>
+    </th>
+    <td>
+      <div class="acms-admin-form-checkbox">
+        <input type="checkbox" name="title_lang[]" value="only_japan" {title_lang:checked#only_japan} id="input-checkbox-title_lang-only_japan" />
+        <label for="input-checkbox-title_lang-only_japan">
+          <i class="acms-admin-ico-checkbox"></i>日本語のみにする</label>
+      </div>
+      <input type="hidden" name="field[]" value="title_lang" />
+    </td>
+  </tr>
+</table>

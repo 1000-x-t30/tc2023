@@ -1,0 +1,168 @@
+@extends("/_layouts/two-column.html")
+
+@section("head-js")
+@parent
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+@endsection
+
+@section("page-title")
+<!-- ページタイトル -->
+@include("/include/global/page-title.html", {"title": "プロフィール変更"})
+@endsection
+
+@section("main")
+<!-- BEGIN_MODULE Member_Update_Profile -->
+<div class="main">
+  <!-- BEGIN success -->
+  <div class="acms-alert acms-alert-icon acms-alert-info">
+    <span class="acms-icon acms-icon-news acms-alert-icon-before" aria-hidden="true"></span>
+    プロフィールを保存しました。
+    <button
+      type="button"
+      class="js-acms-alert-close acms-alert-icon-after"
+      aria-label="アラートを閉じる"
+    >
+      ×
+    </button>
+  </div>
+  <!-- END success-->
+
+  <!-- BEGIN notSuccessful -->
+  <div class="acms-alert acms-alert-icon acms-alert-danger">
+    <span class="acms-icon acms-icon-news acms-alert-icon-before" aria-hidden="true"></span>
+    プロフィールの更新に失敗しました。
+    <button
+      type="button"
+      class="js-acms-alert-close acms-alert-icon-after"
+      aria-label="アラートを閉じる"
+    >
+      ×
+    </button>
+  </div>
+  <!-- END notSuccessful-->
+
+  @include("/_member/parts/error.html")
+  @include("/_member/parts/sns-message.html")
+
+  <form action="" method="post" enctype="multipart/form-data" class="form-account acms-form h-adr">
+    <span class="p-country-name" style="display:none;">Japan</span>
+
+    <section>
+      <h2 class="heading-md heading-line heading-margin-top-none">基本情報</h2>
+      <ul class="form-group-list">
+        <li class="form-group">
+          <div class="form-label">
+            <label for="name">お名前</label>
+          </div>
+          <div class="form-control">
+            <input id="name" type="text" name="name" autocomplete="name" class="acms-form-width-full" value="{name}" placeholder="例）山田 太郎" data-validator="name">
+            <input type="hidden" name="user[]" value="name">
+            <input type="hidden" name="name:v#required" id="name-v-required">
+            <input type="hidden" name="name:c" value="KV">
+
+            <div role="alert" aria-live="assertive">
+              <div data-validator-label="name-v-required" class="validator-result-{name:v#required}">
+                <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>お名前を入力してください。</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="form-group">
+          <div class="form-label">メールアドレス</div>
+          <div class="form-control">
+            <p>{mail}</p>
+            <a href="%{BLOG_URL}%{EMAIL_UPDATE_SEGMENT}" class="button is-bordered is-rounded is-sm">変更する</a>
+          </div>
+        </li>
+        <li class="form-group">
+          <div class="form-label">
+            <label for="icon">プロフィール写真</label>
+          </div>
+          <div class="form-control">
+            <!-- BEGIN icon:veil -->
+            <div class="form-user-icon">
+              <img src="%{ARCHIVES_DIR}{icon}" width="128" height="128" />
+              <input type="hidden" name="icon@old" value="{icon}" />
+            </div>
+            <div class="acms-form-checkbox">
+              <input type="checkbox" name="icon@edit" value="delete" id="input-checkbox-icon" />
+              <label for="input-checkbox-icon"><i class="acms-ico-checkbox"></i><!--T-->削除<!--/T--></label>
+            </div>
+            <!-- END icon:veil -->
+            <input type="file" name="icon" size="20" />
+            <input type="hidden" name="icon:extension" value="image" />
+            <input type="hidden" name="icon@squareWidth" value="250" />
+            <input type="hidden" name="user[]" value="icon" />
+            <p class="form-note">推奨：250px x 250px 以上</p>
+          </div>
+        </li>
+        <!-- BEGIN_MODULE Touch_UpdatePassword -->
+        <li class="form-group">
+          <div class="form-label">パスワード</div>
+          <div class="form-control">
+            <p class="form-private"><span class="acms-icon acms-icon-lock"></span>非公開情報です</p>
+            <a href="%{BLOG_URL}%{PASSWORD_UPDATE_SEGMENT}" class="button is-bordered is-rounded is-sm">変更する</a>
+          </div>
+        </li>
+        <!-- BEGIN_MODULE Member_Tfa_Check -->
+        <li class="form-group">
+          <div class="form-label">2段階認証</div>
+          <div class="form-control">
+            <!-- BEGIN_IF [{step}/eq/unregistered] -->
+            <p class="form-private"><span class="acms-icon acms-icon-lock"></span>設定していません</p>
+            <a href="%{BLOG_URL}%{TFA_UPDATE_SEGMENT}" class="button is-bordered is-rounded is-sm">設定する</a>
+            <!-- END_IF -->
+            <!-- BEGIN_IF [{step}/eq/registered] -->
+            <p class="form-private"><span class="acms-icon acms-icon-lock"></span>設定済み</p>
+            <a href="%{BLOG_URL}%{TFA_UPDATE_SEGMENT}" class="button is-bordered is-rounded is-sm">編集する</a>
+            <!-- END_IF -->
+          </div>
+        </li>
+        <!-- END_MODULE Member_Tfa_Check -->
+        <!-- END_MODULE Touch_UpdatePassword -->
+      </ul>
+    </section>
+
+    @include("/_member/parts/profile/field.html")
+
+    <section>
+      <h2 class="heading-md heading-line">メールマガジン</h2>
+      <div class="acms-form-checkbox form-input-checkbox">
+        <input type="checkbox" name="mail_magazine[]" value="on" {mail_magazine:checked#on} id="input-checkbox-mail_magazine-on">
+        <label for="input-checkbox-mail_magazine-on" data-validator="mail_magazine">
+          <i class="acms-ico-checkbox"></i>
+          メールマガジンを受け取る
+        </label>
+      </div>
+      <p class="form-note">最新のお知らせやキャンペーンなどのお得な情報をお届けいたします。</p>
+      <input type="hidden" name="user[]" value="mail_magazine">
+    </section>
+
+    <div class="form-button-group">
+      <button type="submit" name="ACMS_POST_Member_Update_Profile" class="button is-send">更新する</button>
+    </div>
+  </form>
+
+  @include("/_member/parts/profile/sns.html")
+
+  <section class="attention is-danger">
+    <h2 class="heading-sm heading-color-danger attention-heading">アカウントを削除する</h2>
+    <p>アカウントの削除をご検討されている場合は、以下のボタンより退会手続きへお進みください。</p>
+    <a href="%{BLOG_URL}%{WITHDRAWAL_SEGMENT}" class="button is-danger is-send">退会の手続き</a>
+  </section>
+</div>
+<!-- END_MODULE Member_Update_Profile -->
+@endsection
+
+@section("side")
+<div class="section-side-grid">
+  <!-- リンク集：リスト表示 -->
+  @include("/include/links/side_list.html", {"module_id": "links_membership_side_contents","heading":"会員限定コンテンツ"})
+
+  <!-- アイコン付きリンク -->
+  @include("/include/parts/side-link-membership.html")
+
+  <!-- リンク集：矢印付きリスト -->
+  @include("/include/links/side_arrow.html", {"module_id":"links_membership_side_utility"})
+</div>
+@endsection

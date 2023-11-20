@@ -1,0 +1,56 @@
+<!-- BEGIN_MODULE Touch_SnsLogin -->
+<form action="" method="post" class="acms-form" enctype="multipart/form-data">
+  <section class="form-section">
+    <h2 class="form-section-heading acms-text-center"><span class="text-word-break">SNSアカウントで</span><span class="text-word-break">新規会員登録</span></h2>
+    <p class="form-message">SNSアカウントで新規会員登録すればログイン時にメールアドレス・パスワードの入力は必要なし。<br>ボタンを押すだけで簡単にログインできます。</p>
+  </section>
+  <!-- BEGIN_MODULE Member_Sns -->
+  <ul class="sns-oauth">
+
+    <!-- BEGIN google -->
+    <li class="sns-oauth-item">
+      <button type="submit" name="ACMS_POST_Member_Sns_Google_Signup" class="sns-oauth-button sns-oauth-button-google">
+        <span class="sns-oauth-icon">
+          <img src="/themes/system/images/login/icon_google.svg" width="23" height="23" alt="Google">
+        </span>
+        <span class="sns-oauth-text">Google で新規会員登録</span>
+      </button>
+    </li>
+    <!-- END google -->
+
+    <!-- BEGIN line -->
+    <li class="sns-oauth-item">
+      <button type="submit" name="ACMS_POST_Member_Sns_Line_Signup" class="sns-oauth-button sns-oauth-button-line">
+        <span class="sns-oauth-icon">
+          <img src="/themes/system/images/login/icon_line.png" width="33" height="33" alt="LINE">
+        </span>
+        <span class="sns-oauth-text">LINE で新規会員登録</span>
+      </button>
+    </li>
+    <!-- END line -->
+
+    <!-- BEGIN twitter -->
+    <li class="sns-oauth-item">
+      <button type="submit" name="ACMS_POST_Member_Sns_Twitter_Signup" class="sns-oauth-button sns-oauth-button-x">
+        <span class="sns-oauth-icon -twitter">
+          <img src="/themes/system/images/login/icon_x.svg" width="20" height="21" alt="X">
+        </span>
+        <span class="sns-oauth-text">X で新規会員登録</span>
+      </button>
+    </li>
+    <!-- END twitter -->
+
+    <!-- BEGIN facebook -->
+    <li class="sns-oauth-item">
+      <button type="submit" name="ACMS_POST_Member_Sns_Facebook_Signup" class="sns-oauth-button sns-oauth-button-facebook">
+        <span class="sns-oauth-icon -facebook">
+          <img src="/themes/system/images/login/icon_facebook.png" width="26" height="26" alt="Facebook">
+        </span>
+        <span class="sns-oauth-text">Facebook で新規会員登録</span>
+      </button>
+    </li>
+    <!-- END facebook -->
+  </ul>
+  <!-- END_MODULE Member_Sns -->
+</form>
+<!-- END_MODULE Touch_SnsLogin -->

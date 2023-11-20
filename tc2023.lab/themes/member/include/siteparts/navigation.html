@@ -1,0 +1,20 @@
+<!-- BEGIN_MODULE Navigation id="{{module_id}}" -->
+<nav class="global-nav" aria-label="メイン">
+  @include("/admin/module/setting.html")
+  <!-- BEGIN navigation:loop --><!-- BEGIN ul#front -->
+  <ul class="global-nav-list"><!-- END ul#front -->
+    <!-- BEGIN li#front -->
+    <li class="js-has {attr}" data-target="> ul"><!-- END li#front -->
+      <!-- BEGIN link#front -->
+      <a
+        href="{url}"
+        <!-- BEGIN_IF [{target}/eq/_blank] --> rel="noopener noreferrer" target="_blank"<!-- END_IF -->
+        class="{attr}"
+      ><!-- END link#front -->
+        {label}[raw]<!-- BEGIN link#rear -->
+      </a><!-- END link#rear --><!-- BEGIN li#rear -->
+    </li><!-- END li#rear --><!-- BEGIN ul#rear -->
+  </ul><!-- END ul#rear -->
+  <!-- END navigation:loop -->
+</nav>
+<!-- END_MODULE Navigation -->

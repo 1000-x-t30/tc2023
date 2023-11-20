@@ -1,0 +1,179 @@
+<p class="form-message">会員登録をすると会員限定コンテンツが閲覧可能になります。<br>詳細は<a href="%{BASE_URL}membership.html" class="text-link is-color-text is-bold">会員特典</a>をご覧ください。</p>
+
+<div class="form-group-list is-narrow">
+  <div class="form-group">
+    <!-- BEGIN_IF [{mail:validator#send}/eq/0] -->
+    <div class="acms-alert acms-alert-danger">
+      メールの送信に失敗しました。システムの設定に問題があります。システムの管理者にお問い合わせください。
+    </div>
+    <!-- END_IF -->
+    @include("/_member/parts/error.html")
+    @include("/_member/parts/sns-message.html")
+  </div>
+</div>
+
+<form action="" method="post" class="acms-form" enctype="multipart/form-data">
+  <ul class="form-group-list is-narrow">
+    <li class="form-group">
+      <div class="form-label">
+        <label for="input-text-name" class="acms-form-block acms-clear">お名前</label>
+      </div>
+      <input
+        type="text"
+        name="name"
+        value="{name}"
+        id="input-text-name"
+        class="acms-form-large acms-form-block acms-form-width-full"
+        data-validator="name"
+      >
+      <input type="hidden" name="user[]" value="name">
+      <input type="hidden" name="name:validator#required" id="name-v-required">
+
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="name-v-required" class="validator-result-{name:validator#required}">
+          <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>名前を入力してください。</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="form-group">
+      <div class="form-label">
+        <label for="input-text-mail" class="acms-form-block acms-clear">メールアドレス</label>
+      </div>
+      <input
+        type="text"
+        name="mail"
+        value="{mail}"
+        id="input-text-mail"
+        class="acms-form-large acms-form-block acms-form-width-full"
+        autocomplete="username"
+        placeholder=""
+        data-validator="mail"
+      >
+      <input type="hidden" name="user[]" value="mail">
+      <input type="hidden" name="mail:validator#required" id="mail-v-required">
+      <input type="hidden" name="mail:validator#email" id="mail-v-email">
+      <input type="hidden" name="mail:validator#doubleMail">
+
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="mail-v-required" class="validator-result-{mail:validator#required}">
+          <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>メールアドレスを入力してください。</p>
+        </div>
+      </div>
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="mail-v-email" class="validator-result-{mail:validator#email}">
+          <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>不正なメールアドレスです。</p>
+        </div>
+      </div>
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="mail-v-doubleMail" class="validator-result-{mail:validator#doubleMail}">
+          <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>すでに登録されているメールアドレスです。</p>
+        </div>
+      </div>
+    </li>
+    <!-- BEGIN_IF [{email_auth_signin}/neq/on] -->
+    <li class="form-group">
+      <div class="form-label">
+        <label for="input-text-pass" class="acms-form-block acms-clear">パスワード</label>
+      </div>
+      <div class="js-password_strength form-input-password" data-validator="pass">
+        <input type="text" name="pass" value="" style="display:none;">
+        <input
+          type="password"
+          name="pass"
+          value="{pass}"
+          id="input-text-pass"
+          class="js-input acms-form-large acms-form-block acms-form-width-full"
+          autocomplete="new-password"
+          style="margin-bottom: 0;"
+          <!-- BEGIN_IF [{passwordPolicyMessage}[delnl]/nem] -->
+          aria-describedby="describe-input-text-pass"
+          <!-- END_IF -->
+        >
+        <input type="hidden" name="user[]" value="pass">
+        <input type="hidden" name="pass:validator#required" id="pass-v-required">
+        <input type="hidden" name="pass:validator#password" id="pass-v-password">
+        <div>
+          <div class="js-meter acms-password-strength-meter acms-form-width-full"></div>
+        </div>
+        <span class="js-label acms-password-strength-label" aria-live="assertive"></span>
+      </div>
+
+      <!-- BEGIN passwordPolicyMessage:veil -->
+      <p id="describe-input-text-pass" class="form-helper-text">{passwordPolicyMessage}</p>
+      <!-- END passwordPolicyMessage:veil -->
+
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="pass-v-required" class="validator-result-{pass:validator#required}">
+          <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>パスワードを入力してください。</p>
+        </div>
+      </div>
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="pass-v-password" class="validator-result-{pass:validator#password}">
+          <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>不正なパスワードです。別のパスワードを入力ください。</p>
+        </div>
+      </div>
+    </li>
+    <li class="form-group">
+      <div class="form-label">
+        <label for="input-text-retype_pass" class="acms-form-block acms-clear">確認用パスワード</label>
+      </div>
+      <input type="password" name="retype_pass" value="" style="display:none;" />
+      <input
+        type="password"
+        name="retype_pass"
+        value="{retype_pass}"
+        id="input-text-retype_pass"
+        class="acms-form-large acms-form-block acms-form-width-full"
+        autocomplete="new-password"
+      >
+      <input type="hidden" name="user[]" value="retype_pass">
+      <input type="hidden" name="retype_pass:validator#equalTo" value="pass">
+
+      <p class="form-helper-text">新しいパスワードに記入した内容と同じものを入力してください。</p>
+
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="retype_pass-v-equalTo" class="validator-result-{retype_pass:validator#equalTo}">
+          <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>パスワードが一致しませんでした。もう一度ご確認ください。</p>
+        </div>
+      </div>
+    </li>
+    <!-- END_IF -->
+    @include("/_member/parts/signup/field-input.html")
+    <li class="form-group">
+      <div class="form-label">
+        <label class="acms-form-block acms-clear">プライバシーポリシーへの同意</label>
+      </div>
+      <label class="acms-form-checkbox form-checkbox-only" for="input-privacy-on" data-validator="privacy">
+        <input type="checkbox" name="privacy[]" value="on" id="input-privacy-on" {privacy:checked#on}/>
+        <i class="acms-ico-checkbox"></i>
+        <span class="form-checkbox-only-label">
+          <a href="%{BASE_URL}privacy.html" target="_blank">プライバシーポリシー</a>に同意する
+        </span>
+      </label>
+      <input type="hidden" name="field[]" value="privacy"/>
+      <input type="hidden" name="privacy:v#required" id="privacy-v-required"/>
+
+      <p class="form-helper-text">※お客様の個人情報はお問い合わせへの対応のみに利用させていただきます。</p>
+
+      <div role="alert" aria-live="assertive">
+        <div data-validator-label="privacy-v-required" class="validator-result-{privacy:validator#required}">
+          <p class="form-error-text"><span class="acms-icon acms-icon-news" aria-hidden="true"></span>プライバシーポリシーを確認し、同意いただけないとお問い合わせに応じることができません。</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <p class="form-message is-bold">プライバシーポリシーをご一読いただき、送信内容のご確認にお進みください。</p>
+
+  <div class="form-button-group">
+    <input type="hidden" name="step" value="confirm" />
+    <button
+      type="submit"
+      name="ACMS_POST_Member_Signup_Confirm"
+      class="button is-lg is-width-lg form-button"
+    >
+      内容を確認する
+    </button>
+  </div>
+</form>

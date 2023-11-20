@@ -1,0 +1,62 @@
+@use "global/acms-common" as acms;
+@use "global/common" as global;
+
+/* ------------------------------
+　　区切り線つきボックス
+------------------------------ */
+.separate-item {
+  padding: 2.5rem 2rem 2rem;
+  border: 1px solid global.$color-gray30;
+}
+
+.separate-line {
+  position: relative;
+  margin: 1.5rem 0;
+  text-align: center;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid global.$color-gray30;
+    transform: translateY(-50%);
+    content: "";
+  }
+}
+
+.separate-line-text {
+  display: inline-block;
+  padding: 0.5em;
+  background: white;
+}
+
+@media (min-width: acms.$breakpoint-md-min) {
+  .separate {
+    display: flex;
+    justify-content: center;
+  }
+
+  .separate-item {
+    flex: 1;
+    max-width: 500px;
+    padding: 2rem 4rem;
+    border: none;
+  }
+
+  .separate-line {
+    width: 1px;
+    margin: unset;
+    background: global.$color-gray30;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .separate-line-text {
+    display: none;
+  }
+}

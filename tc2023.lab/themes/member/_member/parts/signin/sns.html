@@ -1,0 +1,58 @@
+<!-- BEGIN_MODULE Touch_SnsLogin -->
+<!-- BEGIN_MODULE Member_Sns -->
+<div class="separate-line">
+  <span class="separate-line-text">または</span>
+</div>
+
+<section class="separate-item">
+  <h2 class="heading-md heading-margin-top-none acms-text-center">SNSアカウントでサインイン</h2>
+  <p class="form-message">SNSサインインならメールアドレス・パスワードの入力は必要なし。ボタンを押すだけで簡単にサインインできます。</p>
+  <p class="form-message -sp-left"><small>※SNSサインインを利用するには事前に連携の設定が必要です。<br class="acms-hide-sp">サインイン後、マイページから連携をお願いいたします。</small></p>
+
+  @include("/_member/parts/sns-message.html")
+
+  <ul class="sns-oauth">
+    <!-- BEGIN google -->
+    <li class="sns-oauth-item">
+      <button type="submit" name="ACMS_POST_Member_Sns_Google_Signin" class="sns-oauth-button sns-oauth-button-google">
+        <span class="sns-oauth-icon">
+          <img src="/themes/system/images/login/icon_google.svg" width="23" height="23" alt="Google">
+        </span>
+        <span class="sns-oauth-text">Google でサインイン</span>
+      </button>
+    </li>
+    <!-- END google -->
+    <!-- BEGIN line -->
+    <li class="sns-oauth-item">
+      <button type="submit" name="ACMS_POST_Member_Sns_Line_Signin" class="sns-oauth-button sns-oauth-button-line">
+        <span class="sns-oauth-icon">
+          <img src="/themes/system/images/login/icon_line.png" width="33" height="33" alt="LINE">
+        </span>
+        <span class="sns-oauth-text">LINE でサインイン</span>
+      </button>
+    </li>
+    <!-- END line -->
+    <!-- BEGIN twitter -->
+    <li class="sns-oauth-item">
+      <button type="submit" name="ACMS_POST_Member_Sns_Twitter_Signin" class="sns-oauth-button sns-oauth-button-x">
+        <span class="sns-oauth-icon -twitter">
+          <img src="/themes/system/images/login/icon_x.svg" width="20" height="21" alt="X">
+        </span>
+        <span class="sns-oauth-text">X でサインイン</span>
+      </button>
+    </li>
+    <!-- END twitter -->
+    <!-- BEGIN facebook -->
+    <li class="sns-oauth-item">
+      <button type="submit" name="ACMS_POST_Member_Sns_Facebook_Signin" class="sns-oauth-button sns-oauth-button-facebook">
+        <span class="sns-oauth-icon -facebook">
+          <img src="/themes/system/images/login/icon_facebook.png" width="26" height="26" alt="Facebook">
+        </span>
+        <span class="sns-oauth-text">Facebook でサインイン</span>
+      </button>
+    </li>
+    <!-- END facebook -->
+  </ul>
+</section>
+<!-- END_MODULE Member_Sns -->
+<!-- END_MODULE Touch_SnsLogin -->

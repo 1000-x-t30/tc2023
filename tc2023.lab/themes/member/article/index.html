@@ -1,0 +1,17 @@
+@extends("/_layouts/base-no-main.html")
+
+@section("head-link")
+@parent
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+@endsection
+
+@section("head-js")
+@parent
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" defer></script>
+<script src="/js/article.js" defer></script>
+@endsection
+
+@section("main")
+<!-- 階層の深さによってテンプレートを読み分け -->
+@include("./_contents/index-level-%{CATEGORY_LEVEL}.html")
+@endsection

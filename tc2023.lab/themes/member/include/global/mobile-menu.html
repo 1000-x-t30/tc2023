@@ -1,0 +1,82 @@
+<div class="acms-hide-lg acms-hide-xl">
+  <button
+    type="button"
+    data-target="#global-nav-mobile"
+    class="global-nav-mobile-menu-btn js-mobile-nav-btn"
+    aria-expanded="false"
+    >
+    <span class="global-nav-mobile-icon-toggle-menu"></span>
+    <span class="global-nav-mobile-menu-text">MENU</span>
+  </button>
+</div>
+<div class="acms-hide-lg acms-hide-xl">
+  <div id="global-nav-mobile" class="js-mobile-nav global-nav-mobile">
+    <div class="global-nav-mobile-inner">
+      <nav aria-label="メイン" class="global-nav-mobile-navbar">
+        <!-- ユーザー名 -->
+        <div class="js-login-show acms-margin-top-medium" style="display: none;">
+          <form action="" method="post" class="js-post_include-ready">
+            <input type="hidden" name="bid" value="%{BID}">
+            <input type="hidden" name="tpl" value="include/global/login-user-name.html">
+            <input type="hidden" name="nocache" value="yes">
+            <input type="hidden" name="query[]" value="nocache">
+            <input type="hidden" name="ACMS_POST_2GET">
+          </form>
+        </div>
+        <div>
+          <!-- グローバルナビ（モバイル端末用） -->
+          @include("/include/siteparts/mobile-navigation.html", {
+            "module_id": "nav_global_sp"
+          })
+        </div>
+        <div class="global-nav-mobile-navbar-btn-group">
+          <div class="js-logout-show" style="display: none;">
+            <div class="acms-margin-bottom-small">
+              @include("/include/parts/button.html", {
+                "href": "%{BASE_URL}%{SIGNIN_SEGMENT}/",
+                "className": "is-arrow is-lg is-block",
+                "text": "サインイン"
+              })
+            </div>
+            <div>
+              @include("/include/parts/button.html", {
+                "href": "%{BASE_URL}%{SIGNUP_SEGMENT}",
+                "className": "is-arrow is-inverse is-bordered is-lg is-block",
+                "text": "新規会員登録"
+              })
+            </div>
+          </div>
+
+          <div class="js-login-show" style="display: none;">
+            <div class="acms-margin-bottom-small">
+              @include("/include/parts/button.html", {
+                "href": "%{BASE_URL}mypage/",
+                "className": "is-arrow is-lg is-block",
+                "text": "マイページ"
+              })
+            </div>
+            <form action="" method="post">
+              @include("/include/parts/button.html", {
+                "as": "button",
+                "type": "submit",
+                "name": "ACMS_POST_Logout",
+                "className": "is-arrow is-inverse is-bordered is-lg is-block",
+                "text": "サインアウト"
+              })
+            </form>
+          </div>
+        </div>
+        <div>
+          <!-- リンク集（モバイル端末用） -->
+          @include("/include/parts/mobile-links.html", {
+            "module_id": "links_global_sp"
+          })
+        </div>
+        <div class="global-nav-mobile-navbar-footer">
+          <!-- SNSアカウント一覧 -->
+          @include("/include/parts/sns-accounts.html")
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

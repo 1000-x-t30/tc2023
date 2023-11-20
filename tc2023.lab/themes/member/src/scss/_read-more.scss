@@ -1,0 +1,36 @@
+@use "global/acms-common" as acms;
+@use "global/common" as global;
+
+/* ------------------------------
+　　続きを読む（会員限定）
+------------------------------ */
+.read-more {
+  margin-bottom: 2em;
+  padding: 2em 1.5em;
+  text-align: center;
+  border: global.$border-width-sm solid global.$color-gray30;
+  border-radius: 1em;
+
+  @media (min-width: acms.$breakpoint-md-min) {
+    margin-bottom: 2.5em;
+    padding: 3em;
+  }
+}
+
+.read-more-heading {
+  margin-top: 0;
+}
+
+.read-more-link {
+  display: inline-block;
+  max-width: 17em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.read-more-link-item {
+  & + & {
+    margin-top: 1em;
+  }
+}

@@ -1,0 +1,64 @@
+@use "sass:math";
+@use "global/acms-common" as acms;
+@use "global/common" as global;
+
+/* ------------------------------
+　　セクション（サマリー）
+------------------------------ */
+.summary-section {
+  & + & {
+    margin-top: 3rem;
+  }
+}
+
+.summary-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .heading-lg,
+  .heading-md,
+  .heading-sm,
+  .heading-ss {
+    margin: 0;
+  }
+}
+
+.summary-section-carousel {
+  position: relative;
+
+  // splideの設定を打ち消し
+  margin: 0 math.div(acms.$unit-gutter, -2) !important;
+
+  .splide__arrow {
+    z-index: 1;
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+    transition: opacity 0.3s;
+
+    &:disabled {
+      opacity: 0;
+    }
+
+    .arrow {
+      @include global.arrow-circle($size: l,$color-bg:global.$color-white,$color-line:gray);
+    }
+  }
+
+  .splide__arrow--prev {
+    display: none;
+  }
+
+  .splide__arrow--next {
+    position: absolute;
+    top: 8.25rem;
+    right: 0.5rem;
+  }
+}

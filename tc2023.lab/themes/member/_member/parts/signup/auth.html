@@ -1,0 +1,23 @@
+<!-- BEGIN enableAccount -->
+<p class="form-message -sp-left">会員登録が完了しました。<br>マイページにて主な会員限定コンテンツを提供しております。<br>引き続き弊社サービスをどうぞよろしくお願いいたします。</p>
+<!-- END enableAccount -->
+
+<!-- BEGIN badRequest -->
+<div class="acms-alert acms-alert-danger"><!--T-->不正なアクセスです。<!--/T--></div>
+<!-- END badRequest -->
+
+<!-- BEGIN expired -->
+<div class="acms-alert acms-alert-danger"><!--T-->有効期限切れのURLです。再度申請ください。<!--/T--></div>
+<!-- END expired -->
+
+<!-- BEGIN notFound -->
+<div class="acms-alert acms-alert-danger"><!--T-->すでに有効済みか無効なURLです。<!--/T--></div>
+<!-- END notFound -->
+
+@include("/_member/parts/error.html")
+
+
+<div class="button-wrap">
+  <a href="%{BASE_URL}mypage/" class="button is-block">マイページへ</a>
+  <a href="%{BASE_URL}" class="button is-block is-bordered">トップページへ戻る</a>
+</div>

@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+    proxy:
+        image: jwilder/nginx-proxy:1.0
+        container_name: proxy
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:delegated
+            - ./docker-compose.d/certs:/etc/nginx/certs:delegated
+            - ./docker-compose.d/nginx.tmpl:/app/nginx.tmpl:cached
+        ports:
+            - "80:80"
+            - "443:443"
+
+    redis:
+        image: "redis:latest"
+        container_name: redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - "./data/redis:/data"
+
+    mysql:
+        image: mysql:8.0.30
+        container_name: mysql
+        user: "1000:50"
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./docker-compose.d/mysql/mysql/data:/var/lib/mysql:delegated
+            - ./docker-compose.d/mysql/mysql/conf.d:/etc/mysql/conf.d:delegated
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        command: --innodb-use-native-aio=
+
+    tc2023.lab:
+        container_name: tc2023.lab
+        build:
+            context: ./
+            dockerfile: ./docker-compose.d/tc2023.lab/Dockerfile
+        # platform: linux/amd64
+        privileged: true
+        volumes:
+            - ./tc2023.lab:/var/www/html:cached
+            - /etc/localtime:/etc/localtime:cached
+            - ./docker-compose.d/etc/cron.d:/etc/cron.d:cached
+            - ./docker-compose.d/var/log:/var/log:cached
+        links:
+            - mysql:mysql
+        environment:
+            - VIRTUAL_HOST=tc2023.lab
+            - HTTPS_METHOD=noredirect

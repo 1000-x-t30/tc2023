@@ -1,0 +1,100 @@
+<!-- オフキャンバス -->
+@include("/include/global/mobile-menu.html")
+
+<header class="header">
+  <!-- BEGIN_MODULE Blog_Field ctx="bid/1" -->
+  <div class="header-item-title">
+    <!-- BEGIN_IF [%{BID}/eq/1/and/%{VIEW}/eq/top] -->
+    <h1 class="header-title">
+    <!-- ELSE -->
+    <p class="header-title">
+    <!-- END_IF -->
+      <a href="%{BASE_URL}">
+        <img
+          src="%{MEDIA_ARCHIVES_DIR}{site_logo@path}"
+          alt="<!-- BEGIN_IF [{site_name}/nem] -->{site_name}<!-- ELSE -->%{ROOT_BLOG_NAME}<!-- END_IF -->"
+          width="<!-- BEGIN_IF [{site_logo@path}[imageRatioSizeW(26)]/nem] -->{site_logo@path}[imageRatioSizeW(26)]<!-- ELSE -->155<!-- END_IF -->"
+          height="26"
+          class="header-logo"
+        >
+      </a>
+    <!-- BEGIN_IF [%{BID}/eq/1/and/%{VIEW}/eq/top] -->
+    </h1>
+    <!-- ELSE -->
+    </p>
+    <!-- END_IF -->
+  </div>
+  <!-- END_MODULE Blog_Field -->
+  <div class="header-item-nav acms-hide-xs acms-hide-sm acms-hide-md">
+    @include("/include/siteparts/navigation.html", {
+      "module_id": "nav_global"
+    })
+  </div>
+
+  <div class="js-logout-show header-item-right acms-hide-xs acms-hide-sm acms-hide-md" data-display="flex" style="display: none;">
+    <div>
+      @include("/include/parts/icon-button.html", {
+        "href": "%{BASE_URL}%{SIGNUP_SEGMENT}/",
+        "className": "is-text-primary",
+        "icon": "user",
+        "text": "新規会員登録"
+      })
+    </div>
+    <div>
+      @include("/include/parts/icon-button.html", {
+        "href": "%{BASE_URL}%{SIGNIN_SEGMENT}/",
+        "className": "is-primary",
+        "icon": "config_access",
+        "text": "サインイン"
+      })
+    </div>
+  </div>
+
+  <div class="js-login-show header-item-right is-separated acms-hide-xs acms-hide-sm acms-hide-md" data-display="flex" style="display: none;">
+    <div>
+      <form action="" method="post" class="js-post_include-ready">
+        <input type="hidden" name="bid" value="%{BID}">
+        <input type="hidden" name="tpl" value="include/global/login-user-name.html">
+        <input type="hidden" name="nocache" value="yes">
+        <input type="hidden" name="query[]" value="nocache">
+        <input type="hidden" name="ACMS_POST_2GET">
+      </form>
+    </div>
+    <div>
+      @include("/include/parts/icon-button.html", {
+        "href": "%{BASE_URL}mypage/",
+        "className": "is-text-primary",
+        "icon": "user",
+        "text": "マイページ"
+      })
+    </div>
+    <form action="" method="post">
+      @include("/include/parts/icon-button.html", {
+        "as": "button",
+        "type": "submit",
+        "name": "ACMS_POST_Logout",
+        "icon": "logout",
+        "text": "サインアウト"
+      })
+    </form>
+  </div>
+
+  <div class="header-item-right acms-hide-lg acms-hide-xl">
+    <div class="js-logout-show" style="display: none;" data-display="flex">
+      @include("/include/parts/icon-button.html", {
+        "href": "%{BASE_URL}%{SIGNIN_SEGMENT}/",
+        "className": "is-column",
+        "icon": "config_access",
+        "text": "サインイン"
+      })
+    </div>
+    <div class="js-login-show" style="display: none;" data-display="flex">
+      @include("/include/parts/icon-button.html", {
+        "href": "%{BASE_URL}mypage/",
+        "className": "is-column",
+        "icon": "user",
+        "text": "マイページ"
+      })
+    </div>
+  </div>
+</header>

@@ -1,0 +1,40 @@
+@extends("/_layouts/member.html")
+
+@section("page-title")
+@include("/include/global/page-title.html", {"title": "新規会員登録", "add_class":"acms-text-center"})
+@endsection
+
+@section("main")
+<!-- BEGIN_MODULE Member_Signup -->
+<div class="container-md">
+  <section class="form-section">
+    @include("/_member/parts/signup/step.html")
+
+    <!-- BEGIN step#auth -->
+    @include("/_member/parts/signup/auth.html")
+    <!-- END step#auth -->
+
+    <!-- BEGIN step#input -->
+    @include("/_member/parts/signup/input.html")
+    <!-- END step#input -->
+
+    <!-- BEGIN step#2 -->
+    @include("/_member/parts/signup/input2.html")
+    <!-- END step#2 -->
+
+    <!-- BEGIN step#confirm -->
+    @include("/_member/parts/signup/confirm.html")
+    <!-- END step#confirm -->
+
+    <!-- BEGIN step#result -->
+    @include("/_member/parts/signup/result.html")
+    <!-- END step#result -->
+  </section>
+  <!-- BEGIN step#input -->
+  <section class="form-section">
+    @include("/_member/parts/signup/sns.html")
+  </section>
+  <!-- END step#input -->
+</div>
+<!-- END_MODULE Member_Signup -->
+@endsection

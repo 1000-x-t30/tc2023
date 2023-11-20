@@ -1,0 +1,16 @@
+@extends("/index.html")
+
+@section("main")
+<main class="main">
+  <section aria-labelledby="search-form-heading" class="search">
+    <div class="module-header clearfix">
+      <h2 id="search-form-heading" class="module-heading heading-sm heading-margin-top-none" ><label for="searchForm">キーワードから検索する</label></h2>
+    </div>
+    @include("/include/parts/form-search.html")
+  </section>
+
+  <h2 class="heading-md heading-line">「%{KEYWORD}」の検索結果</h2>
+  <!-- サマリー：記事一覧 -->
+  @include("/include/entry/summary.html",{"module_id": "summary_index_date"})
+</main>
+@endsection

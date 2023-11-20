@@ -1,0 +1,15 @@
+@extends("/index.html")
+
+@section("main")
+<main class="main">
+  <div class="acms-grid">
+    <div class="container-md">
+      <!-- サマリー：記事一覧 -->
+      @include("/include/entry/summary.html",{"module_id": "summary_members_only", "read_more":"on"})
+    </div>
+  </div>
+</main>
+@endsection
+
+@section("footer-cta")
+@endsection

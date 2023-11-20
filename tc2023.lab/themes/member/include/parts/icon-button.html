@@ -1,0 +1,9 @@
+<{{as | default("a")}}
+  <!-- BEGIN_IF [{{as | default("a")}}/eq/a] -->href="{{href}}"<!-- END_IF -->
+  <!-- BEGIN_IF [{{as | default("a")}}/eq/button] -->type="{{type | default("submit")}}"<!-- END_IF -->
+  <!-- BEGIN_IF [{{as | default("a")}}/eq/button/_and_/{{name}}/nem] -->name="{{name}}"<!-- END_IF -->
+  class="icon-button {{className}}"
+>
+  <span class="acms-icon acms-icon-{{icon}}"></span>
+  <span>{{text}}</span>
+</{{as | default("a")}}>

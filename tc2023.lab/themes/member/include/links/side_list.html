@@ -1,0 +1,16 @@
+<!-- BEGIN_MODULE Links id="{{module_id}}" -->
+<div class="section-side-col is-full">
+  <section class="section-side">
+    <!-- BEGIN_IF [{{heading}}/nem] -->
+    <header class="section-side-header">
+      <h2 class="section-side-title">{{heading}}</h2>
+    </header><!-- END_IF -->
+
+    @include("/admin/module/setting.html")
+    <ul class="list-group">
+      <!-- BEGIN loop -->
+      <li><a href="{url}[buildGlobalVars]" class="list-group-item">{name}</a></li><!-- END loop -->
+    </ul>
+  </section>
+</div>
+<!-- END_MODULE Links -->

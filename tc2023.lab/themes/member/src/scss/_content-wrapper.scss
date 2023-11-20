@@ -1,0 +1,14 @@
+@use "global/acms-common" as acms;
+
+/* ------------------------------
+　　コンテンツ囲み要素
+------------------------------ */
+*:not(.page-title-wrapper) + .content-wrapper {
+  margin-top: 6.5rem;
+}
+
+@media screen and (min-width: acms.$breakpoint-md-min) {
+  *:not(.page-title-wrapper) + .content-wrapper {
+    margin-top: 3.5rem;
+  }
+}

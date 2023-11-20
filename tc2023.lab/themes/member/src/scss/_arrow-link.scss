@@ -1,0 +1,43 @@
+@use "sass:map";
+@use "global/acms-common" as acms;
+@use "global/common" as global;
+
+/* ------------------------------
+　　矢印付きリンク
+------------------------------ */
+.arrow-link {
+  position: relative;
+  padding-left: 30px;
+
+  &::before {
+    position: absolute;
+    top: calc(1em * global.$line-height-lg / 2);
+    left: 0;
+    display: block;
+    transform: translateY(-50%);
+    content: "";
+
+    @include global.arrow-circle($size: ss,$color-bg:global.$color-secondary,$color-line:white);
+  }
+}
+
+.arrow-link-label {
+  color: global.$color-text;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* リスト */
+.arrow-link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .arrow-link + .arrow-link {
+    margin-top: 1em;
+  }
+}

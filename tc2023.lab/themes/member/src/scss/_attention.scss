@@ -1,0 +1,21 @@
+@use "global/acms-common" as acms;
+@use "global/common" as global;
+
+/* ------------------------------
+　　枠付きコンテンツ・メモなど
+------------------------------ */
+.attention {
+  margin-top: 4rem;
+  padding: 2rem;
+  border: global.$border-width-md solid global.$color-error;
+}
+
+.attention-heading {
+  margin-top: 0 !important;
+}
+
+@media screen and (min-width: acms.$breakpoint-md-min) {
+  .attention {
+    padding: 3rem 3.5rem;
+  }
+}

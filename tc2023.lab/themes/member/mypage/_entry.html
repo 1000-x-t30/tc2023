@@ -1,0 +1,29 @@
+@extends("/_layouts/two-column.html")
+
+@section("main")
+<div>
+  <!-- エントリー本文 -->
+  @include("/include/entry/body-mypage.html", {"module_id": "body_no_date", "tag":"on", "sns":"off"})
+</div>
+
+<!-- BEGIN_MODULE Touch_Entry -->
+<section>
+  <!-- サマリー：お知らせ記事一覧 -->
+  <h3 class="heading-md heading-line">会員限定のお知らせ</h3>
+  @include("/include/entry/summary.html", {"module_id": "summary_news","read_more":"on"})
+</section>
+<!-- END_MODULE Touch_Entry -->
+@endsection
+
+@section("side")
+<div class="section-side-grid">
+  <!-- リンク集：リスト表示 -->
+  @include("/include/links/side_list.html", {"module_id": "links_membership_side_contents","heading":"会員限定コンテンツ"})
+
+  <!-- アイコン付きリンク -->
+  @include("/include/parts/side-link-membership.html")
+  
+  <!-- リンク集：矢印付きリスト -->
+  @include("/include/links/side_arrow.html", {"module_id":"links_membership_side_utility"})
+</div>
+@endsection

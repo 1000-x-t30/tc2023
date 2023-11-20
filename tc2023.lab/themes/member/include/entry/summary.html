@@ -1,0 +1,69 @@
+<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
+<div>
+  @include("/include/edit/module-custom.html")
+
+  <!-- BEGIN notFound --><!-- BEGIN_IF [%{KEYWORD}/nem] -->
+  <p class="paragraph">お探しのキーワードで該当するページが見つかりませんでした。</p><!-- ELSE -->
+  <p class="paragraph">ただいまページを準備しております。もうしばらくお待ちください。</p><!-- END_IF -->
+  <!-- END notFound -->
+  <div class="media-list-wrap">
+    <ul class="media-list"><!-- BEGIN unit:loop -->
+      <!-- BEGIN entry:loop -->
+      <li class="media-item">
+        <a href="{url}" class="media-link<!-- BEGIN_IF [{path}/em] --> is-noimage<!-- END_IF -->">
+          <!-- BEGIN image:veil -->
+          <div class="media-item-img">
+            <div class="media-img-wrap">
+              <img src="%{ROOT_DIR}{path}[resizeImg('480','270')]" alt="" width="480" height="270" class="acms-img-responsive media-img">
+            </div>
+          </div><!-- END image:veil -->
+          <div class="media-item-header">
+            <div class="media-header-info">
+              <time class="media-time" datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年{date#m}月{date#d}日( {date#week} )</time>
+              <!-- BEGIN categoryField:veil -->
+              <!-- BEGIN categoryField --><p class="media-category">{fieldCategoryName}</p><!-- END categoryField -->
+              <!-- END categoryField:veil -->
+              <!-- BEGIN membersOnly -->
+              <p class="media-tag tag-limited">
+                <span class="tag-limited-icon acms-icon acms-icon-config_access" aria-hidden="true"></span>
+                <span class="tag-limited-text">会員限定</span>
+              </p>
+              <!-- END membersOnly -->
+            </div>
+            <h2 class="media-title">{title}</h2>
+          </div>
+          <div class="media-item-body">
+            <p class="media-text">{summary}[trim(280, '...')]</p>
+            <!-- BEGIN_IF [{{read_more | default("off")}}/eq/on] -->
+            <p class="media-read-more">続きを読む</p><!-- END_IF -->
+            <!-- BEGIN tag:veil -->
+            <div class="media-tag-wrap">
+              <ul class="tag-list is-sm" aria-label="関連タグ">
+                <!-- BEGIN tag:loop -->
+                <li class="tag-item">#{name}</li>
+                <!-- END tag:loop -->
+              </ul>
+            </div><!-- END tag:veil -->
+            <!-- BEGIN_IF [{{author}}/neq/off] -->
+            <!-- BEGIN userField -->
+            <div class="media-user">
+              <!-- BEGIN fieldUserIcon:veil -->
+              <div class="media-user-icon" aria-label="記事を書いたライター">
+                <img src="%{ARCHIVES_DIR}{fieldUserIcon}[resizeImg(32, 32)]" width="32" height="32" alt="">
+              </div>
+              <!-- END fieldUserIcon:veil -->
+              <p class="media-user-name">
+                {fieldUserName}
+              </p>
+            </div>
+            <!-- END userField -->
+            <!-- END_IF -->
+          </div>
+        </a>
+      </li><!-- END entry:loop -->
+      <!-- END unit:loop -->
+    </ul>
+    </div>
+  @include("/include/parts/pager.html")
+</div>
+<!-- END_MODULE Entry_Summary -->

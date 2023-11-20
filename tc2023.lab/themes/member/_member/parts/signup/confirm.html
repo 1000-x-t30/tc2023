@@ -1,0 +1,33 @@
+<p class="form-message">
+  入力内容をご確認ください。入力されたメールアドレスに確認メールが送信されます。<br>メールの内容に従って登録を完了してください。
+</p>
+
+<table class="form-group-list is-confirm is-narrow">
+  <tbody class="form-group-inner">
+    <tr class="form-group">
+      <th class="form-label">お名前</th>
+      <td class="form-control">{name}</td>
+    </tr>
+    <tr class="form-group">
+      <th class="form-label">メールアドレス</th>
+      <td class="form-control">{mail}</td>
+    </tr>
+    <tr class="form-group">
+      <th class="form-label">パスワード</th>
+      <td class="form-control">非公開です</td>
+    </tr>
+    @include("/_member/parts/signup/field-confirm.html")
+  </tbody>
+</table>
+<div class="form-button-group">
+  <form action="" method="post" enctype="multipart/form-data" class="form-button">
+    <input type="hidden" name="step" value="input" />
+    <input type="hidden" name="takeover" value="{takeover}" />
+    <button type="submit" name="ACMS_POST_Form_Chain" class="button is-lg is-width-sm is-bordered">修正する</button>
+  </form>
+  <form action="" method="post" enctype="multipart/form-data" class="form-button">
+    <input type="hidden" name="step" value="result" />
+    <input type="hidden" name="takeover" value="{takeover}" />
+    <button type="submit" name="ACMS_POST_Member_Signup_Submit" class="button is-lg is-width-lg">確認メールを送信する</button>
+  </form>
+</div>

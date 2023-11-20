@@ -1,0 +1,29 @@
+@use "global/common" as global;
+
+/* ------------------------------
+　　テキストリンク
+------------------------------ */
+.text-link {
+  color: global.$color-link;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.is-bold {
+    font-weight: bold;
+  }
+
+  &.is-color-text {
+    color: global.$color-text;
+  }
+
+  &.is-dashed {
+    text-decoration: none;
+    border-bottom: 1px dashed currentcolor;
+
+    &:hover {
+      border-bottom: 0;
+    }
+  }
+}

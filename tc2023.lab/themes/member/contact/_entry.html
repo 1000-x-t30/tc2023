@@ -1,0 +1,16 @@
+@extends("/_layouts/base.html")
+
+@section("page-title")
+<!-- ページタイトル -->
+@include("/include/global/page-title.html", {"add_class":"acms-text-center"})
+@endsection
+
+@section("main")
+<div class="container-sm">
+  <!-- フォーム本体 -->
+  @include("/contact/form/main.html")
+</div>
+@endsection
+
+@section("footer-cta")
+@endsection

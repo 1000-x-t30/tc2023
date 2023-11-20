@@ -1,0 +1,38 @@
+@extends("/_layouts/two-column.html")
+
+@section("head-link")
+@parent
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+@endsection
+
+@section("head-js")
+@parent
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" defer></script>
+<script src="/js/top.js" defer></script>
+@endsection
+
+@section("page-title")
+<!-- トップ用メインビジュアル -->
+@include("/include/entry/summary-carousel.html",{"module_id": "summary_pickup"})
+@endsection
+
+@section("main")
+<div class="main">
+  <h2 class="heading-sm heading-line heading-margin-top-none">新着記事</h2>
+  <!-- サマリー：記事一覧 -->
+  @include("/include/entry/summary.html",{"module_id": "summary_top"})
+</div>
+@endsection
+
+@section("side")
+<div class="section-side-grid">
+  <!-- カテゴリー：リスト表示 -->
+  @include("/include/category/list_side.html", {"module_id": "category_list_article"})
+
+  <!-- リンク集 -->
+  @include("/include/parts/side-link.html", {"module_id": "MF_side_links"})
+
+  <!-- タグ：リスト表示 -->
+  @include("/include/tag/list_side.html", {"module_id": "tag_cloud"})
+</div>
+@endsection

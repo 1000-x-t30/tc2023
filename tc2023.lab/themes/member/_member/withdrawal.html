@@ -1,0 +1,137 @@
+@extends("/_layouts/member.html")
+
+@section("page-title")
+@include("/include/global/page-title.html", {"title": "退会手続き", "add_class":"acms-text-center"})
+@endsection
+
+@section(main)
+<!-- BEGIN_MODULE Member_Update_Profile -->
+<div class="container-sm">
+  <section class="form-section">
+    <h2 class="heading-md acms-text-center heading-color-error">退会前にご確認ください</h2>
+    <p class="form-message is-bold acms-text-center">以下の項目をよくお読みください。</p>
+
+    <div class="list-centered">
+      <ul class="unordered-list">
+        <li>退会すると保存したデータにアクセスできなくなります</li>
+        <li>退会すると会員限定情報が届かなくなります</li>
+        <li>退会すると会員限定情報が閲覧できなくなります</li>
+        <li>退会後はデータを復元することはできません</li>
+        <li>再度登録する際は、改めて新規会員登録を行ってください</li>
+      </ul>
+    </div>
+
+    <form action="" method="post" enctype="multipart/form-data" class="form-account">
+      <div class="form-group-list is-narrow">
+        <div class="form-group">
+          <div class="validator-result-{withdrawal:validator#operable} acms-alert acms-alert-danger">
+            サインアウトしているため、退会できませんでした。管理者にお問い合わせ下さい。
+          </div>
+          <div class="validator-result-{withdrawal:validator#auth} acms-alert acms-alert-danger">
+            管理権限のため退会できませんでした。管理画面より対応ください。
+          </div>
+          <div class="validator-result-{withdrawal:validator#entryExists} acms-alert acms-alert-danger">
+            エントリーを保有しているため、退会できませんでした。管理者にお問い合わせ下さい。
+          </div>
+          @include("/_member/parts/error.html")
+        </div>
+      </div>
+
+      <ul class="form-group-list is-narrow">
+        <li class="form-group">
+          <div class="form-label">
+            <span class="acms-form-block acms-clear">退会理由（少なくとも１つ選択してください）</span>
+          </div>
+          <ul class="acms-list-nostyle">
+            <li>
+              <div class="acms-form-checkbox acms-margin-bottom-small">
+                <input type="checkbox" name="reason_for_withdrawal[]" value="使用頻度が低い"{reason_for_withdrawal:checked#使用頻度が低い} id="input-checkbox-reason_for_withdrawal_1" />
+                <label for="input-checkbox-reason_for_withdrawal_1">
+                  <i class="acms-ico-checkbox"></i>
+                  使用頻度が低い
+                </label>
+              </div>
+            </li>
+            <li>
+              <div class="acms-form-checkbox acms-margin-bottom-small">
+                <input type="checkbox" name="reason_for_withdrawal[]" value="使いたい機能が少ない"{reason_for_withdrawal:checked#使いたい機能が少ない} id="input-checkbox-reason_for_withdrawal_2" />
+                <label for="input-checkbox-reason_for_withdrawal_2">
+                  <i class="acms-ico-checkbox"></i>
+                  使いたい機能が少ない
+                </label>
+              </div>
+            </li>
+            <li>
+              <div class="acms-form-checkbox acms-margin-bottom-small">
+                <input type="checkbox" name="reason_for_withdrawal[]" value="品質に不満がある"{reason_for_withdrawal:checked#品質に不満がある} id="input-checkbox-reason_for_withdrawal_3" />
+                <label for="input-checkbox-reason_for_withdrawal_3">
+                  <i class="acms-ico-checkbox"></i>
+                  品質に不満がある
+                </label>
+              </div>
+            </li>
+            <li>
+              <div class="acms-form-checkbox acms-margin-bottom-small">
+                <input type="checkbox" name="reason_for_withdrawal[]" value="会員向けの特典・サービスが少ない"{reason_for_withdrawal:checked#会員向けの特典・サービスが少ない} id="input-checkbox-reason_for_withdrawal_4" />
+                <label for="input-checkbox-reason_for_withdrawal_4">
+                  <i class="acms-ico-checkbox"></i>
+                  会員向けの特典・サービスが少ない
+                </label>
+              </div>
+            </li>
+            <li>
+              <div class="acms-form-checkbox acms-margin-bottom-small">
+                <input type="checkbox" name="reason_for_withdrawal[]" value="その他"{reason_for_withdrawal:checked#その他} id="input-checkbox-reason_for_withdrawal_5" />
+                <label for="input-checkbox-reason_for_withdrawal_5">
+                  <i class="acms-ico-checkbox"></i>
+                  その他
+                </label>
+              </div>
+            </li>
+          </ul>
+          <input type="hidden" name="field[]" value="reason_for_withdrawal" />
+          <input type="hidden" name="reason_for_withdrawal:validator#required">
+
+          <div role="alert" class="validator-result-{reason_for_withdrawal:validator#required} form-error-text">
+            <i class="acms-icon acms-icon-news"></i>
+            <span>退会理由を選択してください。</span>
+          </div>
+        </li>
+        <li class="form-group">
+          <div class="form-label">
+            <label for="textarea-reason_for_withdrawal_other" class="acms-form-block acms-clear">その他理由</label>
+          </div>
+          <textarea
+            name="reason_for_withdrawal_other"
+            class="acms-form-width-full"
+            placeholder="よろしければ退会理由を自由にご記入ください"
+            id="textarea-reason_for_withdrawal_other"
+            rows="5"
+          >{reason_for_withdrawal_other}</textarea>
+          <input type="hidden" name="field[]" value="reason_for_withdrawal_other" />
+        </li>
+      </ul>
+
+      <p class="form-message acms-text-center">上記の項目に同意して、以下のボタンから退会してください。</p>
+      <p class="form-message is-bold acms-text-center">退会手続きをしてもよろしいですか？<br>（退会手続き後は元の状態に戻せません）</p>
+
+
+      <div class="form-button-group">
+        <button
+          type="submit"
+          name="ACMS_POST_Member_Withdrawal"
+          class="button is-lg is-width-lg is-danger form-button"
+          onclick="return confirm('本当に退会してもいいですか？この操作は取り消せません。');"
+        >
+          退会する
+        </button>
+      </div>
+    </form>
+
+    <div class="form-button-group">
+      <a href="%{BLOG_URL}%{PROFILE_UPDATE_SEGMENT}/" class="button is-bordered is-lg is-width-lg form-button">プロフィール変更に戻る</a>
+    </div>
+  </section>
+</div>
+<!-- END_MODULE Member_Update_Profile -->
+@endsection

@@ -1,0 +1,32 @@
+<h3 class="acms-admin-admin-title2">CTAの設定</h3>
+<table class="adminTable acms-admin-table-admin-edit">
+  <tr>
+    <th>
+      <label for="input-textarea_cta_lead">リード文</label>
+      <i data-acms-tooltip="リード文を設定します。" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i>
+    </th>
+    <td>
+      <textarea name="cta_lead" rows="2" id="input-textarea_cta_lead" class="acms-admin-form-width-3quarters">{cta_lead}</textarea>
+      <input type="hidden" name="field[]" value="cta_lead" />
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <label for="input-text-btn_text">ボタンの文言</label>
+    </th>
+    <td>
+      <input type="text" name="btn_text" value="{btn_text}" id="input-text-btn_text" class="acms-admin-form-width-3quarters">
+      <input type="hidden" name="field[]" value="btn_text">
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <label for="input-text-btn_url">ボタンのURL</label>
+      <i data-acms-tooltip="グローバル変数が使用できます。" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i>
+    </th>
+    <td>
+      <input type="text" name="btn_url" value="{btn_url}" id="input-text-btn_url" class="acms-admin-form-width-3quarters">
+      <input type="hidden" name="field[]" value="btn_url">
+    </td>
+  </tr>
+</table>

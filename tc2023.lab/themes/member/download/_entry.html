@@ -1,0 +1,35 @@
+@extends("/_layouts/two-column.html")
+
+@section("main")
+<div>
+  <!-- エントリー本文 -->
+  @include("/include/entry/body.html", {"module_id": "body_blog", "tag":"on", "sns":"on"})
+</div>
+
+<!-- BEGIN_MODULE Touch_Entry -->
+<section>
+  <!-- 同カテゴリーの記事一覧 -->
+  <h3 class="heading-sm heading-line">その他の%{CATEGORY_NAME}一覧</h3>
+  @include("/include/entry/summary.html", {"module_id": "summary_entry_category","read_more":"on"})
+</section>
+<!-- END_MODULE Touch_Entry -->
+
+<!-- BEGIN_MODULE Touch_NotEdit -->
+<div class="js-sticky sticky-contents">
+  <div class="container-sm">
+    <!-- SNSシェアボタン -->
+    @include("/include/parts/sns-share.html")
+  </div>
+</div><!-- END_MODULE Touch_NotEdit -->
+@endsection
+
+@section("side")
+<!-- カテゴリー一覧 -->
+@include("/include/category/list_side.html", {"module_id": "category_list_article"})
+
+<!-- リンク集 -->
+@include("/include/parts/side-link.html", {"module_id": "MF_side_links"})
+
+<!-- タグ一覧 -->
+@include("/include/tag/list_side.html", {"module_id": "tag_cloud"})
+@endsection

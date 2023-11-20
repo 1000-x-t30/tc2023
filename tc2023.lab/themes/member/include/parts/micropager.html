@@ -1,0 +1,23 @@
+<!-- BEGIN micropager -->
+<nav class="acms-pager-container" aria-label="ページ送り">
+  <ul class="pager">
+    <!-- BEGIN backLink -->
+    <li><a href="{url}" aria-label="前へ" class="pager-link">@include("/images/arrow-pagination-left.svg")</a></li><!-- END backLink -->
+    <!-- BEGIN firstPage:veil -->
+    <li {pageCurAttr}[raw]><span><a href="{firstPageUrl}" class="pager-link">{firstPage}</a></span></li>
+    <!-- END firstPage:veil -->
+    <!-- BEGIN omitBeforePage --><li>...</li><!-- END omitBeforePage -->
+    <!-- BEGIN page:loop -->
+    <li {pageCurAttr}[raw]><span><!-- BEGIN link#front --><a href="{url}" class="pager-link"><!-- END link#front -->{page}
+      <!-- BEGIN link#rear --></a><!-- END link#rear --><!-- BEGIN glue --><!-- END glue --></span></li>
+    <!-- END page:loop -->
+    <!-- BEGIN omitAfterPage --><li>...</li><!-- END omitAfterPage -->
+    <!-- BEGIN lastPage:veil -->
+    <li {pageCurAttr}[raw]><span><a href="{lastPageUrl}" class="pager-link">{lastPage}</a></span></li>
+    <!-- END lastPage:veil -->
+    <!-- BEGIN forwardLink -->
+    <li><a href="{url}" aria-label="次へ" class="pager-link">@include("/images/arrow-pagination-right.svg")</a></li>
+    <!-- END forwardLink -->
+  </ul>
+</nav>
+<!-- END micropager -->

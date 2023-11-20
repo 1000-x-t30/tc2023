@@ -1,0 +1,39 @@
+@extends("/_layouts/two-column.html")
+
+@section("main")
+<div>
+  <!-- エントリー本文 -->
+  @include("/include/entry/body.html", {"module_id": "body_blog", "tag":"on", "sns":"on"})
+</div>
+
+<!-- BEGIN_MODULE Touch_Entry -->
+<div>
+  <!-- サマリー：関連エントリー -->
+  <h3 class="heading-sm heading-line">関連記事の一覧</h3>
+  @include("/include/entry/summary.html", {"module_id": "summary_article_relational"})
+
+  <!-- 同カテゴリーの記事一覧 -->
+  <h3 class="heading-sm heading-line">同じカテゴリーの記事の一覧</h3>
+  @include("/include/entry/summary.html", {"module_id": "summary_entry_category"})
+</div>
+<!-- END_MODULE Touch_Entry -->
+
+<!-- BEGIN_MODULE Touch_NotEdit -->
+<div class="js-sticky sticky-contents">
+  <div class="container-sm">
+    <!-- SNSシェアボタン -->
+    @include("/include/parts/sns-share.html")
+  </div>
+</div><!-- END_MODULE Touch_NotEdit -->
+@endsection
+
+@section("side")
+<!-- カテゴリー一覧 -->
+@include("/include/category/list_side.html", {"module_id": "category_list_article"})
+
+<!-- アイコン付きリンク -->
+@include("/include/parts/side-link.html", {"module_id": "MF_side_links"})
+
+<!-- タグ一覧 -->
+@include("/include/tag/list_side.html", {"module_id": "tag_cloud"})
+@endsection

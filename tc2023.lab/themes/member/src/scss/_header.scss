@@ -1,0 +1,109 @@
+@use "sass:map";
+@use "global/acms-common" as acms;
+@use "global/common" as global;
+
+/* ------------------------------
+　　ヘッダー
+------------------------------ */
+.header {
+  position: relative;
+  z-index: global.$zindex-header;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template: auto / auto 1fr auto;
+  height: global.$header-height;
+  column-gap: 40px;
+  background: global.$color-white;
+  box-shadow: global.$elevation04;
+}
+
+.header-item-title {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  line-height: 1;
+}
+
+.header-title-link {
+  display: flex;
+}
+
+.header-logo {
+  display: block;
+  max-width: 100%;
+  max-height: 2rem;
+}
+
+.header-item-nav {
+  position: relative;
+  height: 100%;
+  margin-left: 0;
+  font-size: map.get(global.$font-scales, body-m);
+}
+
+.header-item-right {
+  display: flex;
+  height: 100%;
+  margin-left: auto;
+}
+
+.header-item-right > * {
+  display: flex;
+}
+
+.header-item-right.is-separated > *:not(:first-child) {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 1px;
+    height: 24px;
+    margin: auto;
+    background-color: global.$color-gray40;
+    content: "";
+  }
+}
+
+.header-user-name {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 1rem;
+  font-size: map.get(global.$font-scales, body-m);
+
+  span {
+    padding-left: 4px;
+    color: global.$color-gray70;
+    font-size: map.get(global.$font-scales, body-s);
+  }
+}
+
+@media (max-width: acms.$breakpoint-lg-max) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    grid-template: auto / 1fr auto;
+    box-sizing: border-box;
+    width: 100%;
+    height: global.$header-height-fixed;
+    padding-right: global.$header-height-fixed;
+
+    + * {
+      margin-top: global.$header-height-fixed;
+    }
+  }
+
+  .header-item-title {
+    padding-left: 1rem;
+  }
+}

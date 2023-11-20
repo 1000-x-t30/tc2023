@@ -1,0 +1,43 @@
+@extends("/_layouts/mail.html")
+
+@section("body")
+<h1 class="center color-primary">お問い合わせがありました</h1>
+<p>{name}様 よりお問い合わせがありました。</p>
+<hr>
+<p>受付日時：%{Y}年%{n}月%{j}日 %{H}:%{i}:%{s}<br>
+  通番 : {serialNumber}</p>
+<hr>
+<h2 class="center color-primary">お問い合わせ情報</h2>
+<div class="no-scroll">
+  <table class="contents">
+    <tbody>
+    <tr>
+      <th>お問い合わせ種別</th>
+      <td>{description}</td>
+    </tr>
+    <tr>
+      <th colspan="2">お問い合わせ内容</th>
+    </tr>
+    <tr>
+      <td colspan="2">{inquiry}[escape|nl2br]</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="center color-primary">お客様情報</h2>
+<div class="no-scroll">
+  <table class="contents">
+    <tbody>
+    <tr>
+      <th>お名前</th>
+      <td>{name}</td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td>{email}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+@endsection

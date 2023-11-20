@@ -1,0 +1,19 @@
+<div class="section-side-col is-full">
+  <div class="section-side">
+    <!-- BEGIN_MODULE Module_Field id="{{module_id}}" -->
+    @include("/include/edit/module-custom.html")
+    <ul class="side-link-wrap">
+      <!-- BEGIN side_links:veil -->
+      <!-- BEGIN side_links:loop -->
+      <li>
+        <a href="{side_links_url}[buildGlobalVars]" class="side-link">
+          <span class="side-link-icon acms-icon {side_links_icon}" aria-hidden="true"></span>
+          <span class="side-link-label">{side_links_text}</span>
+        </a>
+      </li>
+      <!-- END side_links:loop -->
+      <!-- END side_links:veil -->
+    </ul>
+    <!-- END_MODULE Module_Field -->
+  </div>
+</div>

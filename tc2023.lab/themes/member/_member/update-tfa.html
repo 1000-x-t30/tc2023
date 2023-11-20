@@ -1,0 +1,165 @@
+@extends("/_layouts/member.html")
+
+@section("page-title")
+<!-- ページタイトル -->
+@include("/include/global/page-title.html", {"title": "2段階認証設定", "add_class":"acms-text-center"})
+@endsection
+
+@section(main)
+<!-- BEGIN_MODULE Member_Update_Tfa -->
+<div class="container-md">
+  <section class="form-section">
+    <p class="form-message">2段階認証設定の変更を行います。</p>
+
+    <!-- BEGIN step#unregistered -->
+    <div class="form-group-list is-narrow">
+      <div class="form-group">
+        <!-- BEGIN success -->
+        <div class="acms-alert acms-alert-info">
+          2段階認証を解除しました
+        </div>
+        <!-- END success -->
+        <!-- BEGIN_IF [{code:validator#required}/eq/0] -->
+        <div class="acms-alert acms-alert-danger">
+          認証コードが入力されていません
+        </div>
+        <!-- ELSE_IF [{code:validator#disagreement}/eq/0] -->
+        <div class="acms-alert acms-alert-danger">
+          認証に失敗しました。
+        </div>
+        <!-- END_IF -->
+        <!-- BEGIN_IF [{secret:validator#required}/eq/0] -->
+        <div class="acms-alert acms-alert-danger">
+          シークレットキーがありません。
+        </div>
+        <!-- END_IF -->
+        <!-- BEGIN_IF [{tfa:validator#isOperable}/eq/0] -->
+        <div class="acms-alert acms-alert-danger">
+          不正な操作です
+        </div>
+        <!-- END_IF -->
+      </div>
+    </div>
+
+    <form action="" method="post" class="form-account acms-form" enctype="multipart/form-data">
+      <ul class="form-group-list is-narrow">
+        <li class="form-group">
+          <div class="form-label">
+            <div class="acms-form-block acms-clear">認証コード生成用のアプリにシークレットキーを設定します</div>
+          </div>
+          <p class="form-helper-text">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=ja"
+            >Google Authenticator for Android</a>
+          </p>
+          <p class="form-helper-text">
+            <a
+              href="https://apps.apple.com/jp/app/google-authenticator/id388497605"
+            >Google Authenticator for iOS</a>
+          </p>
+          <p class="form-helper-text">アプリで以下のQRコードを読み取るか、手動でシークレットキーを設定してください。</p>
+
+          <div class="acms-text-center acms-margin-bottom-small">
+            <img src="{qr-image}" />
+          </div>
+          <div
+            class="acms-form-action acms-form-width-large acms-margin-bottom-large"
+          >
+            <span class="acms-form-side"><i class="acms-icon-config_authorize"></i></span>
+            <input
+              type="text"
+              class="acms-form-large acms-form-block acms-form-width-full"
+              value="{secret-txt}"
+              readonly
+              style="margin-bottom: 0"
+            />
+          </div>
+        </li>
+
+        <li class="form-group">
+          <div class="form-label">
+            <label for="input-text-code" class="acms-form-block acms-clear">認証コード</label>
+          </div>
+          <input type="text" name="code" value="" style="display:none;">
+          <input
+            type="text"
+            name="code"
+            value=""
+            id="input-text-code"
+            class="acms-form-large acms-form-block acms-form-width-full"
+            autocomplete="one-time-code"
+            data-validator="code"
+          >
+          <input type="hidden" name="tfa[]" value="code">
+          <input type="hidden" name="secret" value="{secret}" />
+          <input type="hidden" name="tfa[]" value="secret" />
+
+          <p class="form-helper-text">認証コード生成アプリに表示されているコードを入力して、認証ボタンを押して認証します。</p>
+          <p class="form-helper-text">認証コードは短い時間で変わりますので、すばやく入力してください。</p>
+        </li>
+      </ul>
+
+      <div class="form-button-group">
+        <button type="submit" name="ACMS_POST_Member_Tfa_Register" class="button is-lg is-width-lg form-button">認証する</button>
+      </div>
+    </form>
+    <!-- END step#unregistered-->
+
+    <!-- BEGIN step#registered-->
+    <div class="form-group-list is-narrow">
+      <div class="form-group">
+        <!-- BEGIN success -->
+        <div class="acms-alert acms-alert-info">
+          認証に成功しました。
+        </div>
+        <!-- END success -->
+        <!-- BEGIN_IF [{tfa:validator#isOperable}/eq/0] -->
+        <div class="acms-alert acms-alert-danger">
+          不正な操作です
+        </div>
+        <!-- END_IF -->
+      </div>
+    </div>
+    <form action="" method="post" class="form-account acms-form" enctype="multipart/form-data">
+      <!-- BEGIN success -->
+      <ul class="form-group-list is-narrow">
+        <li class="form-group">
+          <div class="form-label">
+            <label for="input-text-recoveryCode" class="acms-form-block acms-clear">リカバリーコード</label>
+          </div>
+          <p class="form-helper-text">
+            リカバリーコードは、一度しか表示されません。必ずここでメモして保管してください。
+          </p>
+          <p class="form-helper-text">
+            認証コードを発行できなくなった場合に、最終手段として以下の「リカバリーコード」を使用して２段階認証を無効にします。
+          </p>
+          <div
+            class="acms-form-action acms-form-width-large acms-margin-bottom-large"
+          >
+            <span class="acms-form-side"><i class="acms-icon-config_authorize"></i></span>
+            <input
+              type="text"
+              class="acms-form-large acms-form-block acms-form-width-full"
+              id="input-text-recoveryCode"
+              value="{recoveryCode}"
+              readonly
+              style="margin-bottom: 0"
+            />
+          </div>
+        </li>
+      </ul>
+      <!-- END success -->
+      <div class="form-button-group">
+        <button type="submit" name="ACMS_POST_Member_Tfa_Unregister" class="button is-lg is-width-lg is-danger form-button">２段階認証を解除</button>
+      </div>
+    </form>
+    <!-- END step#registered-->
+
+
+    <div class="form-button-group">
+      <a href="%{BLOG_URL}%{PROFILE_UPDATE_SEGMENT}/" class="button is-bordered is-lg is-width-lg form-button">プロフィール変更に戻る</a>
+    </div>
+  </section>
+</div>
+<!-- END_MODULE Member_Update_Tfa -->
+@endsection

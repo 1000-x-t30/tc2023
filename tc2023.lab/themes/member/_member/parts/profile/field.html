@@ -1,0 +1,112 @@
+<section>
+  <h2 class="heading-md heading-line">個人情報</h2>
+  <ul class="form-group-list">
+    <li class="form-group">
+      <div class="form-label">
+        <label for="gender">性別</label>
+      </div>
+      <div class="form-control">
+        <select id="gender" class="form-select acms-form-width-full" name="gender" data-validator="gender">
+          <option value="">選択してください</option>
+          <option value="男性"{gender:selected#男性}>男性</option>
+          <option value="女性"{gender:selected#女性}>女性</option>
+          <option value="その他"{gender:selected#その他}>その他</option>
+          <option value="回答しない"{gender:selected#回答しない}>回答しない</option>
+        </select>
+        <input type="hidden" name="field[]" value="gender">
+      </div>
+    </li>
+
+    <li class="form-group">
+      <div class="form-label">
+        <label for="birthday">お誕生日</label>
+      </div>
+      <div class="form-control">
+        <input id="birthday" type="text" name="birthday" autocomplete="birthday" class="acms-form-width-full" value="{birthday}" placeholder="例）1990/01/01">
+        <input type="hidden" name="field[]" value="birthday">
+      </div>
+    </li>
+
+    <li class="form-group">
+      <div class="form-label">住所</div>
+      <div class="form-control">
+        <div class="form-sub-group">
+          <div class="acms-grid">
+            <div class="acms-col-12 acms-col-md-6">
+              <div class="form-sub-label"><label for="postal_code">郵便番号</label></div>
+              <input id="postal_code" type="text" name="postal_code" autocomplete="postal_code" class="acms-form-width-full p-postal-code" value="{postal_code}" placeholder="例）000-0000">
+              <input type="hidden" name="field[]" value="postal_code">
+            </div>
+
+            <div class="acms-col-12 acms-col-md-6">
+              <div class="form-sub-label"><label for="pref">都道府県</label></div>
+              <select name="pref" class="form-select acms-form-width-full p-region">
+                <option value="">選択してください</option>
+                <option value="北海道" {pref:selected#北海道}>北海道</option>
+                <option value="青森県" {pref:selected#青森県}>青森県</option>
+                <option value="岩手県" {pref:selected#岩手県}>岩手県</option>
+                <option value="宮城県" {pref:selected#宮城県}>宮城県</option>
+                <option value="秋田県" {pref:selected#秋田県}>秋田県</option>
+                <option value="山形県" {pref:selected#山形県}>山形県</option>
+                <option value="福島県" {pref:selected#福島県}>福島県</option>
+                <option value="茨城県" {pref:selected#茨城県}>茨城県</option>
+                <option value="栃木県" {pref:selected#栃木県}>栃木県</option>
+                <option value="群馬県" {pref:selected#群馬県}>群馬県</option>
+                <option value="埼玉県" {pref:selected#埼玉県}>埼玉県</option>
+                <option value="千葉県" {pref:selected#千葉県}>千葉県</option>
+                <option value="東京都" {pref:selected#東京都}>東京都</option>
+                <option value="神奈川県" {pref:selected#神奈川県}>神奈川県</option>
+                <option value="新潟県" {pref:selected#新潟県}>新潟県</option>
+                <option value="富山県" {pref:selected#富山県}>富山県</option>
+                <option value="石川県" {pref:selected#石川県}>石川県</option>
+                <option value="福井県" {pref:selected#福井県}>福井県</option>
+                <option value="山梨県" {pref:selected#山梨県}>山梨県</option>
+                <option value="長野県" {pref:selected#長野県}>長野県</option>
+                <option value="岐阜県" {pref:selected#岐阜県}>岐阜県</option>
+                <option value="静岡県" {pref:selected#静岡県}>静岡県</option>
+                <option value="愛知県" {pref:selected#愛知県}>愛知県</option>
+                <option value="三重県" {pref:selected#三重県}>三重県</option>
+                <option value="滋賀県" {pref:selected#滋賀県}>滋賀県</option>
+                <option value="京都府" {pref:selected#京都府}>京都府</option>
+                <option value="大阪府" {pref:selected#大阪府}>大阪府</option>
+                <option value="兵庫県" {pref:selected#兵庫県}>兵庫県</option>
+                <option value="奈良県" {pref:selected#奈良県}>奈良県</option>
+                <option value="和歌山県" {pref:selected#和歌山県}>和歌山県</option>
+                <option value="鳥取県" {pref:selected#鳥取県}>鳥取県</option>
+                <option value="島根県" {pref:selected#島根県}>島根県</option>
+                <option value="岡山県" {pref:selected#岡山県}>岡山県</option>
+                <option value="広島県" {pref:selected#広島県}>広島県</option>
+                <option value="山口県" {pref:selected#山口県}>山口県</option>
+                <option value="徳島県" {pref:selected#徳島県}>徳島県</option>
+                <option value="香川県" {pref:selected#香川県}>香川県</option>
+                <option value="愛媛県" {pref:selected#愛媛県}>愛媛県</option>
+                <option value="高知県" {pref:selected#高知県}>高知県</option>
+                <option value="福岡県" {pref:selected#福岡県}>福岡県</option>
+                <option value="佐賀県" {pref:selected#佐賀県}>佐賀県</option>
+                <option value="長崎県" {pref:selected#長崎県}>長崎県</option>
+                <option value="熊本県" {pref:selected#熊本県}>熊本県</option>
+                <option value="大分県" {pref:selected#大分県}>大分県</option>
+                <option value="宮崎県" {pref:selected#宮崎県}>宮崎県</option>
+                <option value="鹿児島県" {pref:selected#鹿児島県}>鹿児島県</option>
+                <option value="沖縄県" {pref:selected#沖縄県}>沖縄県</option>
+              </select>
+              <input type="hidden" name="field[]" value="pref">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-sub-group">
+          <div class="form-sub-label"><label for="address">市区町村番地</label></div>
+          <input id="address" type="text" name="address" autocomplete="address" class="acms-form-width-full p-region p-locality p-street-address p-extended-address" value="{address}" placeholder="例）〇〇市〇〇区〇〇 〇丁目〇-〇">
+          <input type="hidden" name="field[]" value="address">
+        </div>
+
+        <div class="form-sub-group">
+          <div class="form-sub-label"><label for="building">ビル名</label></div>
+          <input id="building" type="text" name="building" autocomplete="building" class="acms-form-width-full" value="{building}" placeholder="例）〇〇〇〇ビル〇F">
+          <input type="hidden" name="field[]" value="building">
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>

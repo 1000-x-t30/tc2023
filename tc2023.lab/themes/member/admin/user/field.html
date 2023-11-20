@@ -1,0 +1,197 @@
+<h3 class="acms-admin-admin-title2">プロフィール</h3>
+<table class="adminTable acms-admin-table-admin-edit">
+  <tr>
+    <th>性別</th>
+    <td>
+      <select name="gender" class="acms-admin-form-width-mini">
+        <option value="">選択してください</option>
+        <option value="男性"{gender:selected#男性}>男性</option>
+        <option value="女性"{gender:selected#女性}>女性</option>
+        <option value="その他"{gender:selected#その他}>その他</option>
+        <option value="回答しない"{gender:selected#回答しない}>回答しない</option>
+      </select>
+      <input type="hidden" name="field[]" value="gender" />
+    </td>
+  </tr>
+  <tr>
+    <th>お誕生日</th>
+    <td>
+      <input type="text" name="birthday" value="{birthday}" class="acms-admin-form-width-mini" />
+      <input type="hidden" name="field[]" value="birthday" />
+    </td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>
+      <table>
+        <tr>
+          <th>郵便番号</th>
+          <td>
+            <input type="text" name="postal_code" value="{postal_code}" class="acms-admin-form-width-mini" />
+            <input type="hidden" name="field[]" value="postal_code" />
+          </td>
+        </tr>
+        <tr>
+          <th>都道府県</th>
+          <td>
+            <select name="pref" class="acms-admin-form-width-mini">
+              <option value="">選択してください</option>
+              <option value="北海道" {pref:selected#北海道}>北海道</option>
+              <option value="青森県" {pref:selected#青森県}>青森県</option>
+              <option value="岩手県" {pref:selected#岩手県}>岩手県</option>
+              <option value="宮城県" {pref:selected#宮城県}>宮城県</option>
+              <option value="秋田県" {pref:selected#秋田県}>秋田県</option>
+              <option value="山形県" {pref:selected#山形県}>山形県</option>
+              <option value="福島県" {pref:selected#福島県}>福島県</option>
+              <option value="茨城県" {pref:selected#茨城県}>茨城県</option>
+              <option value="栃木県" {pref:selected#栃木県}>栃木県</option>
+              <option value="群馬県" {pref:selected#群馬県}>群馬県</option>
+              <option value="埼玉県" {pref:selected#埼玉県}>埼玉県</option>
+              <option value="千葉県" {pref:selected#千葉県}>千葉県</option>
+              <option value="東京都" {pref:selected#東京都}>東京都</option>
+              <option value="神奈川県" {pref:selected#神奈川県}>神奈川県</option>
+              <option value="新潟県" {pref:selected#新潟県}>新潟県</option>
+              <option value="富山県" {pref:selected#富山県}>富山県</option>
+              <option value="石川県" {pref:selected#石川県}>石川県</option>
+              <option value="福井県" {pref:selected#福井県}>福井県</option>
+              <option value="山梨県" {pref:selected#山梨県}>山梨県</option>
+              <option value="長野県" {pref:selected#長野県}>長野県</option>
+              <option value="岐阜県" {pref:selected#岐阜県}>岐阜県</option>
+              <option value="静岡県" {pref:selected#静岡県}>静岡県</option>
+              <option value="愛知県" {pref:selected#愛知県}>愛知県</option>
+              <option value="三重県" {pref:selected#三重県}>三重県</option>
+              <option value="滋賀県" {pref:selected#滋賀県}>滋賀県</option>
+              <option value="京都府" {pref:selected#京都府}>京都府</option>
+              <option value="大阪府" {pref:selected#大阪府}>大阪府</option>
+              <option value="兵庫県" {pref:selected#兵庫県}>兵庫県</option>
+              <option value="奈良県" {pref:selected#奈良県}>奈良県</option>
+              <option value="和歌山県" {pref:selected#和歌山県}>和歌山県</option>
+              <option value="鳥取県" {pref:selected#鳥取県}>鳥取県</option>
+              <option value="島根県" {pref:selected#島根県}>島根県</option>
+              <option value="岡山県" {pref:selected#岡山県}>岡山県</option>
+              <option value="広島県" {pref:selected#広島県}>広島県</option>
+              <option value="山口県" {pref:selected#山口県}>山口県</option>
+              <option value="徳島県" {pref:selected#徳島県}>徳島県</option>
+              <option value="香川県" {pref:selected#香川県}>香川県</option>
+              <option value="愛媛県" {pref:selected#愛媛県}>愛媛県</option>
+              <option value="高知県" {pref:selected#高知県}>高知県</option>
+              <option value="福岡県" {pref:selected#福岡県}>福岡県</option>
+              <option value="佐賀県" {pref:selected#佐賀県}>佐賀県</option>
+              <option value="長崎県" {pref:selected#長崎県}>長崎県</option>
+              <option value="熊本県" {pref:selected#熊本県}>熊本県</option>
+              <option value="大分県" {pref:selected#大分県}>大分県</option>
+              <option value="宮崎県" {pref:selected#宮崎県}>宮崎県</option>
+              <option value="鹿児島県" {pref:selected#鹿児島県}>鹿児島県</option>
+              <option value="沖縄県" {pref:selected#沖縄県}>沖縄県</option>
+            </select>
+            <input type="hidden" name="field[]" value="pref" />
+          </td>
+        </tr>
+        <tr>
+          <th>市区町村番地</th>
+          <td>
+            <input type="text" name="address" value="{address}" class="acms-admin-form-width-full" />
+            <input type="hidden" name="field[]" value="address" />
+          </td>
+        </tr>
+        <tr>
+          <th>ビル名</th>
+          <td>
+            <input type="text" name="building" value="{building}" class="acms-admin-form-width-full" />
+            <input type="hidden" name="field[]" value="building" />
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- BEGIN_MODULE Touch_SessionWithCompilation -->
+<h3 class="acms-admin-admin-title2">管理メモ</h3>
+<table class="adminTable acms-admin-table-admin-edit">
+  <tr>
+    <th>管理メモ
+      <i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="管理者用メモ欄です。ユーザーには公開されません。"></i>
+    </th>
+    <td>
+      <textarea name="admin_note" rows="4" class="acms-admin-form-width-full">{admin_note}</textarea>
+      <input type="hidden" name="field[]" value="admin_note" />
+    </td>
+  </tr>
+</table>
+
+<h3 class="acms-admin-admin-title2">退会理由</h3>
+<table class="adminTable acms-admin-table-admin-edit">
+  <tr>
+    <th>退会理由</th>
+    <td>
+      <ul class="acms-admin-list-nostyle">
+        <li>
+          <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+            <input type="checkbox" name="reason_for_withdrawal[]" value="使用頻度が低い"{reason_for_withdrawal:checked#使用頻度が低い} id="input-checkbox-reason_for_withdrawal_1" />
+            <label for="input-checkbox-reason_for_withdrawal_1">
+              <i class="acms-admin-ico-checkbox"></i>
+              使用頻度が低い
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+            <input type="checkbox" name="reason_for_withdrawal[]" value="使いたい機能が少ない"{reason_for_withdrawal:checked#使いたい機能が少ない} id="input-checkbox-reason_for_withdrawal_2" />
+            <label for="input-checkbox-reason_for_withdrawal_2">
+              <i class="acms-admin-ico-checkbox"></i>
+              使いたい機能が少ない
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+            <input type="checkbox" name="reason_for_withdrawal[]" value="品質に不満がある"{reason_for_withdrawal:checked#品質に不満がある} id="input-checkbox-reason_for_withdrawal_3" />
+            <label for="input-checkbox-reason_for_withdrawal_3">
+              <i class="acms-admin-ico-checkbox"></i>
+              品質に不満がある
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+            <input type="checkbox" name="reason_for_withdrawal[]" value="会員向けの特典・サービスが少ない"{reason_for_withdrawal:checked#会員向けの特典・サービスが少ない} id="input-checkbox-reason_for_withdrawal_4" />
+            <label for="input-checkbox-reason_for_withdrawal_4">
+              <i class="acms-admin-ico-checkbox"></i>
+              会員向けの特典・サービスが少ない
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="acms-admin-form-checkbox acms-admin-margin-bottom-small">
+            <input type="checkbox" name="reason_for_withdrawal[]" value="その他"{reason_for_withdrawal:checked#その他} id="input-checkbox-reason_for_withdrawal_5" />
+            <label for="input-checkbox-reason_for_withdrawal_5">
+              <i class="acms-admin-ico-checkbox"></i>
+              その他
+            </label>
+          </div>
+        </li>
+      </ul>
+      <input type="hidden" name="field[]" value="reason_for_withdrawal" />
+    </td>
+  </tr>
+  <tr>
+    <th>その他</th>
+    <td>
+      <textarea
+        name="reason_for_withdrawal_other"
+        class="acms-admin-form-width-full"
+        placeholder="よろしければ退会理由を自由にご記入ください"
+        rows="5"
+      >{reason_for_withdrawal_other}</textarea>
+      <input type="hidden" name="field[]" value="reason_for_withdrawal_other" />
+    </td>
+  </tr>
+</table>
+<!-- END_MODULE Touch_SessionWithCompilation -->
+
+<style>
+  .acms-admin-table-admin-edit table th {
+    width: 10em;
+  }
+</style>

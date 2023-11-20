@@ -1,0 +1,143 @@
+<!-- BEGIN_MODULE Touch_SnsLogin -->
+<!-- BEGIN_MODULE Member_Sns -->
+<section>
+  <h2 class="heading-md heading-line">SNS連携</h2>
+  <div>
+    <ul class="sns-link">
+      <!-- BEGIN google -->
+      <li class="sns-link-item">
+        <h3 class="sns-link-heading">
+          <span class="sns-link-icon -google">
+            <img src="/themes/system/images/login/icon_google.svg" width="25" height="25" alt="Google">
+          </span>
+          <span class="sns-icon-name">Google</span>
+        </h3>
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="sns-link-buttons">
+            <!-- BEGIN google_notVerified -->
+            <button
+              type="submit"
+              name="ACMS_POST_Member_Sns_Google_Register"
+              class="button is-bordered"
+            >
+              連携する
+            </button>
+            <!-- END google_notVerified -->
+            <!-- BEGIN google_verified -->
+            <p class="sns-link-buttons-linked">連携済み</p>
+            <button
+              type="submit"
+              name="ACMS_POST_Member_Sns_Google_Unregister"
+              class="button is-bordered-danger"
+            >
+              連携解除
+            </button>
+            <!-- END google_verified -->
+          </div>
+        </form>
+      </li>
+      <!-- END google -->
+      <!-- BEGIN line -->
+      <li class="sns-link-item">
+        <h3 class="sns-link-heading">
+          <span class="sns-link-icon -line">
+            <img src="/themes/system/images/login/icon_line.png" width="25" height="25" alt="LINE">
+          </span>
+          <span class="sns-icon-name">LINE</span>
+        </h3>
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="sns-link-buttons">
+            <!-- BEGIN line_notVerified -->
+            <button
+              type="submit"
+              name="ACMS_POST_Member_Sns_Line_Register"
+              class="button is-bordered"
+            >
+              連携する
+            </button>
+            <!-- END line_notVerified -->
+            <!-- BEGIN line_verified -->
+            <p class="sns-link-buttons-linked">連携済み</p>
+            <button
+              type="submit"
+              name="ACMS_POST_Member_Sns_Line_Unregister"
+              class="js-submit button is-bordered-danger"
+            >
+              連携解除
+            </button>
+            <!-- END line_verified -->
+          </div>
+        </form>
+      </li>
+      <!-- END line -->
+      <!-- BEGIN twitter -->
+      <li class="sns-link-item">
+        <h3 class="sns-link-heading">
+          <span class="sns-link-icon -x">
+            <span class="acms-icon acms-icon-x"></span>
+          </span>
+          <span class="sns-icon-name">X（旧Twitter）</span>
+        </h3>
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="sns-link-buttons">
+            <!-- BEGIN tw_notVerified -->
+            <button
+              type="submit"
+              name="ACMS_POST_Member_Sns_Twitter_Register"
+              class="button is-bordered"
+            >
+              連携する
+            </button>
+            <!-- END tw_notVerified -->
+            <!-- BEGIN tw_verified -->
+            <p class="sns-link-buttons-linked">連携済み</p>
+            <button
+              type="submit"
+              name="ACMS_POST_Member_Sns_Twitter_Unregister"
+              class="button is-bordered-danger"
+            >
+              連携解除
+            </button>
+            <!-- END tw_verified -->
+          </div>
+        </form>
+      </li>
+      <!-- END twitter -->
+      <!-- BEGIN facebook -->
+      <li class="sns-link-item">
+        <h3 class="sns-link-heading">
+          <span class="sns-link-icon -facebook">
+            <span class="acms-icon acms-icon-facebook-circle"></span>
+          </span>
+          <span class="sns-icon-name">Facebook</span>
+        </h3>
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="sns-link-buttons">
+            <!-- BEGIN fb_notVerified -->
+            <button
+              type="submit"
+              name="ACMS_POST_Member_Sns_Facebook_Register"
+              class="button is-bordered"
+            >
+              連携する
+            </button>
+            <!-- END fb_notVerified -->
+            <!-- BEGIN fb_verified -->
+            <p class="sns-link-buttons-linked">連携済み</p>
+            <button
+              type="submit"
+              name="ACMS_POST_Member_Sns_Facebook_Unregister"
+              class="button is-bordered-danger"
+            >
+              連携解除
+            </button>
+            <!-- END fb_verified -->
+          </div>
+        </form>
+      </li>
+      <!-- END facebook -->
+    </ul>
+  </div>
+</section>
+<!-- END_MODULE Member_Sns -->
+<!-- END_MODULE Touch_SnsLogin -->
