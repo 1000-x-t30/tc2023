@@ -1,7 +1,8 @@
+.DS_Store
+
 /data/*
 /docker-compose.d/etc/supervisor/*
 /docker-compose.d/certs/*
 /docker-compose.d/mysql/*
 /docker-compose.d/tc2023.lab/Supervisor
 /docker-compose.d/var/*
-
